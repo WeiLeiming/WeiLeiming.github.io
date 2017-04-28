@@ -39,7 +39,7 @@ seo: false
 menu:
   home: /
   #categories: /categories
-  #about: /about
+  about: /about
   archives: /archives
   tags: /tags
   #sitemap: /sitemap.xml
@@ -286,7 +286,7 @@ mathjax:
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: d3a0b0e1b89bd5aee64e8645cf88c810
 
 # Duoshuo ShortName
 #duoshuo_shortname:
