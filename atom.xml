@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>魏雷鸣的技术博客</title>
+  <subtitle>生有涯，知无涯</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://willwei.me/"/>
+  <updated>2017-04-28T01:58:45.000Z</updated>
+  <id>http://willwei.me/</id>
+  
+  <author>
+    <name>Will Wei</name>
+    <email>2008weileiming@163.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>青春和爱情</title>
+    <link href="http://willwei.me/2017/04/26/%E9%9D%92%E6%98%A5%E5%92%8C%E7%88%B1%E6%83%85/"/>
+    <id>http://willwei.me/2017/04/26/青春和爱情/</id>
+    <published>2017-04-26T03:03:29.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>青春 — 席慕蓉</p>
+</blockquote>
+<p>所有的结局都已写好</p>
+<p>所有的泪水也都已启程</p>
+<p>却忽然忘了是怎么样的一个开始</p>
+<p>在那个古老的不再回来的夏日</p>
+<p>无论我如何地去追索</p>
+<p>年轻的你只如云影掠过　</p>
+<p>而你微笑的面容极浅极淡　</p>
+<p>逐渐隐没在日落后的群岚</p>
+<p>遂翻开那发黄的扉页</p>
+<p>命运将它装订的极为拙劣</p>
+<p>含着泪 我一读再读</p>
+<p>却不得不承认</p>
+<p>青春 是一本太仓促的书</p>
+<a id="more"></a>
+<blockquote>
+<p>我曾经爱过你 — 普希金</p>
+</blockquote>
+<p>爱情，</p>
+<p>也许在我的心灵里还没有完全消亡，</p>
+<p>但愿它不会再打扰你，</p>
+<p>我也不想再使你难过悲伤。</p>
+<p>我曾经默默无语、毫无指望地爱过你，</p>
+<p>我既忍受着羞怯，又忍受着嫉妒的折磨，</p>
+<p>我曾经那样真诚、那样温柔地爱过你，</p>
+<p>但愿上帝保佑你，</p>
+<p>另一个人也会像我一样地爱你。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;青春 — 席慕蓉&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所有的结局都已写好&lt;/p&gt;
+&lt;p&gt;所有的泪水也都已启程&lt;/p&gt;
+&lt;p&gt;却忽然忘了是怎么样的一个开始&lt;/p&gt;
+&lt;p&gt;在那个古老的不再回来的夏日&lt;/p&gt;
+&lt;p&gt;无论我如何地去追索&lt;/p&gt;
+&lt;p&gt;年轻的你只如云影掠过　&lt;/p&gt;
+&lt;p&gt;而你微笑的面容极浅极淡　&lt;/p&gt;
+&lt;p&gt;逐渐隐没在日落后的群岚&lt;/p&gt;
+&lt;p&gt;遂翻开那发黄的扉页&lt;/p&gt;
+&lt;p&gt;命运将它装订的极为拙劣&lt;/p&gt;
+&lt;p&gt;含着泪 我一读再读&lt;/p&gt;
+&lt;p&gt;却不得不承认&lt;/p&gt;
+&lt;p&gt;青春 是一本太仓促的书&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://willwei.me/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS App安装包瘦身</title>
+    <link href="http://willwei.me/2017/04/19/iOS-App%E5%AE%89%E8%A3%85%E5%8C%85%E7%98%A6%E8%BA%AB/"/>
+    <id>http://willwei.me/2017/04/19/iOS-App安装包瘦身/</id>
+    <published>2017-04-19T08:53:52.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>最近的一个小项目，打包出来的ipa包高达90.8MB，这是我始料未及的，于是动了心思为它瘦身。</p>
+<a id="more"></a>
+<h1 id="安装包瘦身"><a href="#安装包瘦身" class="headerlink" title="安装包瘦身"></a>安装包瘦身</h1><h2 id="资源优化"><a href="#资源优化" class="headerlink" title="资源优化"></a>资源优化</h2><p>资源包括图片、音视频文件、配置文件、字体包等。</p>
+<h3 id="删除无用资源及重复资源"><a href="#删除无用资源及重复资源" class="headerlink" title="删除无用资源及重复资源"></a>删除无用资源及重复资源</h3><p>无用资源指资源在工程文件中，但是没有被代码引用。重复资源指文件内容一样，文件名可以不一样的资源。</p>
+<ul>
+<li>删除无用资源工具：<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="external">LSUnusedResources</a><ul>
+<li>勾选<code>Ignore similar name</code>防止误删</li>
+</ul>
+</li>
+<li>删除重复资源工具：<a href="https://macpaw.com/gemini" target="_blank" rel="external">Gemini</a><ul>
+<li>完全重复项可删，相似项看情况删除</li>
+</ul>
+</li>
+</ul>
+<p>一般来说工程管理的好的话，这两个是减少不了多少体积下来的。</p>
+<h3 id="资源压缩"><a href="#资源压缩" class="headerlink" title="资源压缩"></a>资源压缩</h3><ul>
+<li>图片资源压缩。<ul>
+<li>工具：<a href="https://tinypng.com/" target="_blank" rel="external">TinyPng</a>或<a href="https://github.com/ImageOptim/ImageOptim" target="_blank" rel="external">ImageOptim</a></li>
+</ul>
+</li>
+<li>音视频压缩。没做过。</li>
+</ul>
+<p>资源压缩是一定要做的，可以缩小很多体积。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>图片资源尽量放在<code>Assets.xcassets</code>中管理。</li>
+</ul>
+<h2 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a>编译优化</h2><ul>
+<li><code>Build Settings -&gt; Optimization Level</code>，Release设置为<code>Fastest, Smallest</code>。</li>
+<li><code>Build Settings -&gt; Strip Debug Symbols During Copy</code>设置为<code>Yes</code>。</li>
+<li><code>Build Settings -&gt; Symbols Hidden by Default</code>设置为<code>Yes</code>。</li>
+<li><code>Build Settings -&gt; Dead Code Stripping</code> 设置成 <code>Yes</code>。</li>
+<li><code>Build Settings -&gt; Strip Linked Product</code>设置为<code>Yes</code>。</li>
+<li><code>Build Settings -&gt; Deployment Postprocessing</code>设置为<code>Yes</code>。</li>
+<li><code>Build Settings -&gt; Use Separate Strip</code>设置为<code>Yes</code>。</li>
+</ul>
+<p>编译优化感觉减小的并不多。</p>
+<h2 id="可执行文件优化"><a href="#可执行文件优化" class="headerlink" title="可执行文件优化"></a>可执行文件优化</h2><p>待研究</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html" target="_blank" rel="external">Build Setting Reference</a></p>
+<p><a href="http://jonathanblog2000.blogspot.sg/2013/07/xcode-build-settings-for-debug-symbol.html" target="_blank" rel="external">xcode build settings for debug symbol</a></p>
+<p> <a href="http://stackoverflow.com/questions/17650138/ios-ipa-file-size-xcode-archive-vs-xcodebuild-command" target="_blank" rel="external">iOS IPA file size - xcode-archive vs. xcodebuild command</a></p>
+<p><a href="http://www.jianshu.com/p/11710e7ab661" target="_blank" rel="external">Xcode中和symbols有关的几个设置</a></p>
+<p><a href="http://www.cocoachina.com/ios/20150202/11084.html" target="_blank" rel="external">iOS可执行文件瘦身方法</a></p>
+<p><a href="http://www.jianshu.com/p/c94dedef90b7" target="_blank" rel="external">iOS APP安装包瘦身实践</a></p>
+<p><a href="http://superdanny.link/2017/03/03/App-Thinning/#more" target="_blank" rel="external">为自己的 APP 瘦身</a></p>
+<p><a href="http://www.cocoachina.com/ios/20151203/14562.html" target="_blank" rel="external">iOS微信安装包瘦身</a></p>
+<p><a href="http://blog.csdn.net/mengxiangyue/article/details/50753858" target="_blank" rel="external">iOS9-by-Tutorials-学习笔记四：APP-瘦身</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;最近的一个小项目，打包出来的ipa包高达90.8MB，这是我始料未及的，于是动了心思为它瘦身。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://willwei.me/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UITabbarController左右滑动切换标签页</title>
+    <link href="http://willwei.me/2017/04/12/UITabbarController%E5%B7%A6%E5%8F%B3%E6%BB%91%E5%8A%A8%E5%88%87%E6%8D%A2%E6%A0%87%E7%AD%BE%E9%A1%B5/"/>
+    <id>http://willwei.me/2017/04/12/UITabbarController左右滑动切换标签页/</id>
+    <published>2017-04-12T01:25:03.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>为UINavigationController添加Category获取根视图控制器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (UIViewController *)ww_rootViewController &#123;</div><div class="line">    if (self.viewControllers &amp;&amp; [self.viewControllers count] &gt; 0) &#123;</div><div class="line">        return [self.viewControllers firstObject];</div><div class="line">    &#125;</div><div class="line">    return nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在基类BaseViewController中添加判断，只有根控制器才添加切换手势</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    if ([self.navigationController.ww_rootViewController isKindOfClass:[self class]]) &#123;</div><div class="line">        [self addSwitchGestureRecognizer];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现<code>addSwitchGestureRecognizer</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)addSwitchGestureRecognizer &#123;</div><div class="line">    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(baseGestureRightButton:)];</div><div class="line">    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];</div><div class="line">    [self.view addGestureRecognizer:swipeLeft];</div><div class="line">    </div><div class="line">    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(baseGestureLeftButton:)];</div><div class="line">    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];</div><div class="line">    [self.view addGestureRecognizer:swipeRight];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>右滑事件，注释里面是另外的动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">- (void)baseGestureRightButton:(id)sender &#123;</div><div class="line">    NSUInteger selectedIndex = [self.tabBarController selectedIndex];</div><div class="line">    NSArray *viewControllerArray = self.tabBarController.viewControllers;</div><div class="line">    /*</div><div class="line">    if (selectedIndex &lt; viewControllerArray.count - 1) &#123;</div><div class="line">        [self.tabBarController setSelectedIndex:selectedIndex + 1];</div><div class="line">        //To animate use this code</div><div class="line">        CATransition *anim= [CATransition animation];</div><div class="line">        [anim setType:kCATransitionPush];</div><div class="line">        [anim setSubtype:kCATransitionFromRight];</div><div class="line">        [anim setDuration:0.4f];</div><div class="line">        [anim setTimingFunction:[CAMediaTimingFunction functionWithName:</div><div class="line">                                 kCAMediaTimingFunctionEaseIn]];</div><div class="line">        [self.tabBarController.view.layer addAnimation:anim forKey:@&quot;fadeTransition&quot;];</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line">    /*</div><div class="line">    if (selectedIndex &lt; viewControllerArray.count - 1) &#123;</div><div class="line">        UIView *fromView = [self.tabBarController.selectedViewController view];</div><div class="line">        UIView *toView = [[self.tabBarController.viewControllers objectAtIndex:selectedIndex + 1] view];</div><div class="line">        [UIView transitionFromView:fromView toView:toView duration:0.5f options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) &#123;</div><div class="line">            if (finished) &#123;</div><div class="line">                [self.tabBarController setSelectedIndex:selectedIndex + 1];</div><div class="line">            &#125;</div><div class="line">        &#125;];</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line">    if (selectedIndex &lt; viewControllerArray.count - 1) &#123;</div><div class="line">        NSUInteger controllerIndex = selectedIndex + 1;</div><div class="line">        // Get the views.</div><div class="line">        UIView *fromView = self.tabBarController.selectedViewController.view;</div><div class="line">        UIView *toView = [[viewControllerArray objectAtIndex:controllerIndex] view];</div><div class="line">        </div><div class="line">        // Get the size of the view area.</div><div class="line">        CGRect viewSize = fromView.frame;</div><div class="line">        BOOL scrollRight = controllerIndex &gt; self.tabBarController.selectedIndex;</div><div class="line">        </div><div class="line">        // Add the to view to the tab bar view.</div><div class="line">        [fromView.superview addSubview:toView];</div><div class="line">        </div><div class="line">        // Position it off screen.</div><div class="line">        toView.frame = CGRectMake((scrollRight ? viewSize.size.width : -viewSize.size.width), viewSize.origin.y, viewSize.size.width, viewSize.size.height);</div><div class="line">        </div><div class="line">        [UIView animateWithDuration:0.5f</div><div class="line">                         animations: ^&#123;</div><div class="line">                             // Animate the views on and off the screen. This will appear to slide.</div><div class="line">                             fromView.frame = CGRectMake((scrollRight ? -viewSize.size.width : viewSize.size.width), viewSize.origin.y, viewSize.size.width, viewSize.size.height);</div><div class="line">                             toView.frame = CGRectMake(0, viewSize.origin.y, viewSize.size.width, viewSize.size.height);</div><div class="line">                         &#125;</div><div class="line">                         completion:^(BOOL finished) &#123;</div><div class="line">                             if (finished) &#123;</div><div class="line">                                 // Remove the old view from the tabbar view.</div><div class="line">                                 [fromView removeFromSuperview];</div><div class="line">                                 self.tabBarController.selectedIndex = controllerIndex;</div><div class="line">                             &#125;</div><div class="line">                         &#125;];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>左滑事件，注释里面是另外的动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">- (void)baseGestureLeftButton:(id)sender &#123;</div><div class="line">    NSUInteger selectedIndex = [self.tabBarController selectedIndex];</div><div class="line">    NSArray *viewControllerArray = self.tabBarController.viewControllers;</div><div class="line">    /*</div><div class="line">    if (selectedIndex &gt; 0) &#123;</div><div class="line">        [self.tabBarController setSelectedIndex:selectedIndex - 1];</div><div class="line">        CATransition *anim= [CATransition animation];</div><div class="line">        [anim setType:kCATransitionPush];</div><div class="line">        [anim setSubtype:kCATransitionFromLeft];</div><div class="line">        [anim setDuration:0.4f];</div><div class="line">        [anim setTimingFunction:[CAMediaTimingFunction functionWithName:</div><div class="line">                                 kCAMediaTimingFunctionEaseIn]];</div><div class="line">        [self.tabBarController.view.layer addAnimation:anim forKey:@&quot;fadeTransition&quot;];</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line">    /*</div><div class="line">    if (selectedIndex &gt; 0) &#123;</div><div class="line">        UIView *fromView = [self.tabBarController.selectedViewController view];</div><div class="line">        UIView *toView = [[self.tabBarController.viewControllers objectAtIndex:selectedIndex - 1] view];</div><div class="line">        [UIView transitionFromView:fromView toView:toView duration:0.5f options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) &#123;</div><div class="line">            if (finished) &#123;</div><div class="line">                [self.tabBarController setSelectedIndex:selectedIndex - 1];</div><div class="line">            &#125;</div><div class="line">        &#125;];</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line">    if (selectedIndex &gt; 0) &#123;</div><div class="line">        NSUInteger controllerIndex = selectedIndex - 1;</div><div class="line">        // Get the views.</div><div class="line">        UIView *fromView = self.tabBarController.selectedViewController.view;</div><div class="line">        UIView *toView = [[viewControllerArray objectAtIndex:controllerIndex] view];</div><div class="line">        </div><div class="line">        // Get the size of the view area.</div><div class="line">        CGRect viewSize = fromView.frame;</div><div class="line">        BOOL scrollRight = controllerIndex &gt; self.tabBarController.selectedIndex;</div><div class="line">        </div><div class="line">        // Add the to view to the tab bar view.</div><div class="line">        [fromView.superview addSubview:toView];</div><div class="line">        </div><div class="line">        // Position it off screen.</div><div class="line">        toView.frame = CGRectMake((scrollRight ? viewSize.size.width : -viewSize.size.width), viewSize.origin.y, viewSize.size.width, viewSize.size.height);</div><div class="line">        </div><div class="line">        [UIView animateWithDuration:0.5f</div><div class="line">                         animations: ^&#123;</div><div class="line">                             // Animate the views on and off the screen. This will appear to slide.</div><div class="line">                             fromView.frame = CGRectMake((scrollRight ? -viewSize.size.width : viewSize.size.width), viewSize.origin.y, viewSize.size.width, viewSize.size.height);</div><div class="line">                             toView.frame = CGRectMake(0, viewSize.origin.y, viewSize.size.width, viewSize.size.height);</div><div class="line">                         &#125;</div><div class="line">                         completion:^(BOOL finished) &#123;</div><div class="line">                             if (finished) &#123;</div><div class="line">                                 // Remove the old view from the tabbar view.</div><div class="line">                                 [fromView removeFromSuperview];</div><div class="line">                                 self.tabBarController.selectedIndex = controllerIndex;</div><div class="line">                             &#125;</div><div class="line">                         &#125;];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://stackoverflow.com/questions/12533976/ios-swipe-left-right-between-tabs-possible" target="_blank" rel="external">ios-swipe-left-right-between-tabs-possible</a></p>
+<p><a href="http://stackoverflow.com/questions/5161730/iphone-how-to-switch-tabs-with-an-animation" target="_blank" rel="external">iphone-how-to-switch-tabs-with-an-animation</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为UINavigationController添加Category获取根视图控制器&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;- (UIViewController *)ww_rootViewController &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    if (self.viewControllers &amp;amp;&amp;amp; [self.viewControllers count] &amp;gt; 0) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        return [self.viewControllers firstObject];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    return nil;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://willwei.me/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iTerm2安装配置</title>
+    <link href="http://willwei.me/2017/03/21/iTerm2%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/"/>
+    <id>http://willwei.me/2017/03/21/iTerm2安装配置/</id>
+    <published>2017-03-21T09:07:32.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>偶然看见一个比较喜欢的终端界面</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fdukrbiu9lj30hl09m768.jpg" alt="222"></p>
+<p>于是尝试配置了出来，写这篇博客记录下步骤。以下适用于Mac。</p>
+<a id="more"></a>
+<h1 id="下载安装iTerm2"><a href="#下载安装iTerm2" class="headerlink" title="下载安装iTerm2"></a>下载安装<a href="http://www.iterm2.com/" target="_blank" rel="external">iTerm2</a></h1><p>Mac自带了Zsh。想要最新版可以通过下面的命令安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install zsh</div></pre></td></tr></table></figure>
+<p>查看Zsh版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ zsh --version</div></pre></td></tr></table></figure>
+<p>iTerm2默认使用dash，改成Zsh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chsh -s /bin/zsh</div></pre></td></tr></table></figure>
+<h1 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh-my-zsh"></a>安装<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a></h1><p>打开iTerm2，通过<code>curl</code> 或 <code>wget</code>安装</p>
+<p><strong>via curl</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</div></pre></td></tr></table></figure>
+<p><strong>via wget</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</div></pre></td></tr></table></figure>
+<p>设置主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.zshrc</div></pre></td></tr></table></figure>
+<p>修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ZSH_THEME=&quot;agnoster&quot;</div></pre></td></tr></table></figure>
+<h1 id="安装solarized"><a href="#安装solarized" class="headerlink" title="安装solarized"></a>安装<a href="https://github.com/altercation/solarized" target="_blank" rel="external">solarized</a></h1><p>下载工程，进入刚刚下载的工程<code>solarized/iterm2-colors-solarized</code> 下双击 <code>Solarized Dark.itermcolors</code> 把配置文件导入到 iTerm2 里中</p>
+<p>将iTerm2配色方案配置为Solarized Dark</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdvgkooci7j30pe0h0q5g.jpg" alt="222"></p>
+<h1 id="安装powerline"><a href="#安装powerline" class="headerlink" title="安装powerline"></a>安装<a href="http://powerline.readthedocs.io/en/latest/installation.html" target="_blank" rel="external">powerline</a></h1><p>安装powerline</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install powerline-status</div></pre></td></tr></table></figure>
+<p>如果没有pip指令，先安装pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo easy_install pip</div></pre></td></tr></table></figure>
+<p>如执行指令<code>pip install powerline-status</code>出错</p>
+<p>一个可能是没下载安装苹果官方的<a href="https://developer.apple.com/download/more/?name=for%20Xcode%20" target="_blank" rel="external">Command line</a>，如果已经有了依然出错可能是权限问题，使用如下命令安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install powerline-status --user</div></pre></td></tr></table></figure>
+<h1 id="安装字体库"><a href="#安装字体库" class="headerlink" title="安装字体库"></a>安装<a href="https://github.com/powerline/fonts" target="_blank" rel="external">字体库</a></h1><p>下载工程，进入工程目录，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./install.sh</div></pre></td></tr></table></figure>
+<p>如提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">All Powerline fonts installed to /Users/superdanny/Library/Fonts</div></pre></td></tr></table></figure>
+<p>则复制成功。</p>
+<p>将iTerm2字体修改为Meslo LG S Regular for Powerline，12pt</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdvh22nwk2j30pa0f4mzc.jpg" alt="222"></p>
+<h1 id="安装zsh-syntax-highlighting"><a href="#安装zsh-syntax-highlighting" class="headerlink" title="安装zsh-syntax-highlighting"></a>安装<a href="https://github.com/zsh-users/zsh-syntax-highlighting" target="_blank" rel="external">zsh-syntax-highlighting</a></h1><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</div></pre></td></tr></table></figure>
+<p>在<code>~/.zshrc</code>中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plugins=(zsh-syntax-highlighting)</div></pre></td></tr></table></figure>
+<p>然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ source ~/.zshrc</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;偶然看见一个比较喜欢的终端界面&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ww3.sinaimg.cn/large/006tKfTcly1fdukrbiu9lj30hl09m768.jpg&quot; alt=&quot;222&quot;&gt;&lt;/p&gt;
+&lt;p&gt;于是尝试配置了出来，写这篇博客记录下步骤。以下适用于Mac。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="奇淫巧技" scheme="http://willwei.me/tags/%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Hexo搭建个人博客</title>
+    <link href="http://willwei.me/2017/03/09/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://willwei.me/2017/03/09/使用Hexo搭建个人博客/</id>
+    <published>2017-03-09T03:05:28.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结下自己用<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Hexo</a>搭建博客的过程。整个博客是挂在GitHub Pages上的，域名是自己买的，搭建时Hexo是3.2.2版本，因为自己用的Mac电脑，所以此篇适用于苹果电脑。废话不多说，正式开始吧。</p>
+<a id="more"></a>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>到Node.js<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>下载对应平台的最新版本，按提示安装即可</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>因为我已经装了Xcode所以自带Git（否则会叫安装Xcode，那就安装咯）</p>
+<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><p>Node.js和Git安装好后就可以安装Hexo了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ cd blog</div><div class="line">$ npm install</div><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>如果没出错，就可以在本地服务上<code>http://localhost:4000/</code>查看效果了。</p>
+<p>这是我blog文件夹下的目录结构</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fdgfvbdgrfj3058042gln.jpg" alt="3B045A84-0EBE-42ED-A785-452CB5C2E187"></p>
+<p>配置修改在<strong>_config.yml</strong>中，新建的md文件都放置在<code>/source/_posts</code>中，<strong>themes</strong>放置的是主题</p>
+<h1 id="介绍下Hexo常用的命令"><a href="#介绍下Hexo常用的命令" class="headerlink" title="介绍下Hexo常用的命令"></a>介绍下Hexo常用的命令</h1><p>新建文章</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;文章名称&quot;</div></pre></td></tr></table></figure>
+<p>生成静态网页</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div></pre></td></tr></table></figure>
+<p>启动本地服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<p>上传部署</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure>
+<h1 id="GitHub配置"><a href="#GitHub配置" class="headerlink" title="GitHub配置"></a>GitHub配置</h1><h2 id="申请账号"><a href="#申请账号" class="headerlink" title="申请账号"></a>申请账号</h2><p>略</p>
+<h2 id="新建Repository"><a href="#新建Repository" class="headerlink" title="新建Repository"></a>新建Repository</h2><p>这里只有一个地方需要说明，就是Repository name。</p>
+<p>填写格式为：username.github.io</p>
+<p>比如我的账号是weileiming，那么我的主页地址就是weileiming.github.io</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fdhnxm4h4bj30n40h00uo.jpg" alt="222"></p>
+<p>我这因为已经建过了所以报了这个错，没有新建过的话再点Create repository就可以建立了</p>
+<p>还不懂的可以看看<a href="https://help.github.com/articles/user-organization-and-project-pages/" target="_blank" rel="external">官方文档</a></p>
+<h2 id="Hexo关联Repository"><a href="#Hexo关联Repository" class="headerlink" title="Hexo关联Repository"></a>Hexo关联Repository</h2><p>在_config.yml中将新建的仓库添加上</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fdhpymx9gcj30ei02taa6.jpg" alt="222"></p>
+<h2 id="Github-Pages个人主页绑定个人域名"><a href="#Github-Pages个人主页绑定个人域名" class="headerlink" title="Github Pages个人主页绑定个人域名"></a>Github Pages个人主页绑定个人域名</h2><p>如果有个人域名的话，可以绑定自己的个人域名。<a href="https://help.github.com/articles/quick-start-setting-up-a-custom-domain/" target="_blank" rel="external">官方文档</a></p>
+<p>如何申请个人域名百度去吧。</p>
+<p>先把IP地址ping出来</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fem91j1nokj30cb02nwf1.jpg" alt="ping"></p>
+<p>之后添加解析</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fem93jgmnzj30n3021mx6.jpg" alt="解析"></p>
+<p>去刚刚建立的仓库里面点击Create new file</p>
+<p>文件名填写CNAME，内容填写个人域名，如willwei.me，commit上去就可以用个人域名访问了</p>
+<p>当然如果是拿来用hexo做博客的话这样CNAME是会被干掉的，所以这样搞不行，我将CNAME放在了这里</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgliu4jy8j30b1047wen.jpg" alt="333"></p>
+<p>然后在用hexo一起部署上去</p>
+<h1 id="Hexo的一些主题"><a href="#Hexo的一些主题" class="headerlink" title="Hexo的一些主题"></a>Hexo的一些主题</h1><p>以下是我个人喜欢的一些主题，集成步骤都比较简单</p>
+<p><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">hexo-theme-next</a></p>
+<p><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">hexo-theme-yilia</a></p>
+<p>我使用的是yilia主题，修改配置的话，主题的配置文件是themes/yilia下<strong>_config.yml</strong></p>
+<h2 id="一些技巧-yilia为例"><a href="#一些技巧-yilia为例" class="headerlink" title="一些技巧(yilia为例)"></a>一些技巧(yilia为例)</h2><p>在文章中加<code>&lt;!--more--&gt;</code>可以使这之后的内容隐藏</p>
+<p>如果要修改截断文字，可以在<code>themes/yilia/_config.yml</code>中配置</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fem952769nj305400vmx2.jpg" alt="截断文字"></p>
+<h1 id="更多配置"><a href="#更多配置" class="headerlink" title="更多配置"></a>更多配置</h1><h2 id="RSS订阅及SEO"><a href="#RSS订阅及SEO" class="headerlink" title="RSS订阅及SEO"></a>RSS订阅及SEO</h2><p>在博客根目录下安装<code>hexo-generator-feed</code>、<code>hexo-generator-baidu-sitemap</code>、<code>hexo-generator-sitemap</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-feed --save</div><div class="line">$ npm install hexo-generator-baidu-sitemap --save</div><div class="line">$ npm install hexo-generator-sitemap --save</div></pre></td></tr></table></figure>
+<p>在博客根目录下的<code>_config.yml</code>中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sitemap:</div><div class="line">    path: sitemap.xml</div><div class="line">    </div><div class="line">baidusitemap:</div><div class="line">    path: baidusitemap.xml</div><div class="line"></div><div class="line">feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 100</div></pre></td></tr></table></figure>
+<h2 id="Hexo升级"><a href="#Hexo升级" class="headerlink" title="Hexo升级"></a>Hexo升级</h2><p>在博客根目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm upgrade hexo</div></pre></td></tr></table></figure>
+<h2 id="yilia升级"><a href="#yilia升级" class="headerlink" title="yilia升级"></a>yilia升级</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd themes/yilia</div><div class="line">$ git pull</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结下自己用&lt;a href=&quot;https://github.com/hexojs/hexo&quot;&gt;Hexo&lt;/a&gt;搭建博客的过程。整个博客是挂在GitHub Pages上的，域名是自己买的，搭建时Hexo是3.2.2版本，因为自己用的Mac电脑，所以此篇适用于苹果电脑。废话不多说，正式开始吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="奇淫巧技" scheme="http://willwei.me/tags/%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80/"/>
+    
+      <category term="Hexo" scheme="http://willwei.me/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity导出Xcode工程集成进另一个原生Xcode工程,错误及解决方法记录</title>
+    <link href="http://willwei.me/2017/03/02/Unity%E5%AF%BC%E5%87%BAXcode%E5%B7%A5%E7%A8%8B%E9%9B%86%E6%88%90%E8%BF%9B%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9FXcode%E5%B7%A5%E7%A8%8B,%E9%94%99%E8%AF%AF%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/"/>
+    <id>http://willwei.me/2017/03/02/Unity导出Xcode工程集成进另一个原生Xcode工程,错误及解决方法记录/</id>
+    <published>2017-03-02T03:23:02.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在研究Unity导出的Xcode工程如何集成在现有工程中。现将过程中遇见的问题整理如下。</p>
+<a id="more"></a>
+<h1 id="Unity导出Xcode工程编译错误"><a href="#Unity导出Xcode工程编译错误" class="headerlink" title="Unity导出Xcode工程编译错误"></a>Unity导出Xcode工程编译错误</h1><ol>
+<li>MapFileParser.sh: Permission denied</li>
+</ol>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fd8c4lh1l8j30mv01dt96.jpg" alt="ADB6928C-7EF7-4469-8CEC-856B504A63B3"></p>
+<p>打开终端，进入<code>MapFileParser.sh</code>所在目录，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 777 MapFileParser.sh</div></pre></td></tr></table></figure>
+<ol>
+<li>推送警告</li>
+</ol>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1ff1c19i81gj30n2014t93.jpg" alt="E432AF53-86D7-44A7-9649-F262E3EBC351"></p>
+<p>解决方法Capablilties-&gt;Background Modes-&gt;Remote notifications</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1ff1bzgczroj30o40afta7.jpg" alt="75BDC5C5-7DC9-4CB4-A55C-1959E7198C10"></p>
+<h1 id="Unity导出Xcode工程集成进原生Xcode工程"><a href="#Unity导出Xcode工程集成进原生Xcode工程" class="headerlink" title="Unity导出Xcode工程集成进原生Xcode工程"></a>Unity导出Xcode工程集成进原生Xcode工程</h1><h2 id="集成步骤"><a href="#集成步骤" class="headerlink" title="集成步骤"></a>集成步骤</h2><h3 id="Unity导出Xcode工程"><a href="#Unity导出Xcode工程" class="headerlink" title="Unity导出Xcode工程"></a>Unity导出Xcode工程</h3><p>在iOS的<strong>Player Setting</strong>中进行设置</p>
+<ul>
+<li><p>Resolution and Presentation</p>
+<p>根据项目需要设定，需要注意的是Orientation方向必须是原生工程Orientation方向的子集</p>
+</li>
+<li><p>Other Settings</p>
+<ul>
+<li>消掉Auto Graphics API，Graphics APIs列表中只留OpenGLES2</li>
+<li>Scripting Backend选择IL2CPP</li>
+<li>Bundle Identifier、Target Device、Target minimum iOS Version根据原生工程设置</li>
+</ul>
+</li>
+</ul>
+<p>这是我导出来的工程目录，设备只选择了iPhone</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgmwn9tqhj305c06ljrq.jpg" alt="111"></p>
+<h3 id="集成工程"><a href="#集成工程" class="headerlink" title="集成工程"></a>集成工程</h3><blockquote>
+<p><strong>注意：</strong>Build Setting和Build Phases中的设置均是根据Unity_Xcode中设置得到的，集成的时候对照两个工程的设置集成</p>
+</blockquote>
+<ul>
+<li>我在原生工程目录下新建了一个Unity文件夹来放置从Unity_Xcode工程中拷贝过来需要使用的文件</li>
+</ul>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fdgmyx5urlj30gu06pjs1.jpg" alt="222"></p>
+<ul>
+<li>将文件添加进工程目录</li>
+</ul>
+<p>将Classes、Libraries、MapFileParser.sh添加进工程目录</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fdgogg7fsij30l80cw752.jpg" alt="333"></p>
+<p>将Data添加进工程目录</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgoft719rj30l80cwaau.jpg" alt="444"></p>
+<p>注意这两种不同的添加形式</p>
+<ul>
+<li>添加framework</li>
+</ul>
+<p>根据自己导出的Unity_Xcode工程添加</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fdgoxk1oncj30nj0daabs.jpg" alt="555"></p>
+<ul>
+<li>Build Settings</li>
+</ul>
+<p>设置Header Search Paths</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fdgp5v2yb8j30jj0660th.jpg" alt="111"></p>
+<p>设置Library Search Paths</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fdgphvrzdij30jj067mxq.jpg" alt="444"></p>
+<p>设置Other Linker Flags</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fdgplwi962j30j30670t2.jpg" alt="333"></p>
+<p>设置Other C Flags &amp; Other C++ Flags</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgpqzi4a9j30jj067dg5.jpg" alt="222"></p>
+<p>设置C Language Dialect</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgpsr63j4j30eq00ldfq.jpg" alt="222"></p>
+<p>设置C++ Language Dialect</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgptuhwqkj30e700ngli.jpg" alt="222"></p>
+<p>设置C++ Standard Library</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fdgpuvg8h4j30j000pmx5.jpg" alt="222"></p>
+<p>设置Enable Bitcode</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgpvqt66yj30c200m0sl.jpg" alt="222"></p>
+<p>Add User-Defined Setting</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgpypkbzrj30fy01vglq.jpg" alt="222"></p>
+<p>添加GCC_THUMB_SUPPORT</p>
+<p>添加GCC_USE_INDIRECT_FUNCTION_CALLS</p>
+<p>添加UNITY_RUNTIME_VERSION。此项根据Unity导出的版本填写。</p>
+<p>添加UNITY_SCRIPTING_BACKEND</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fdgq23tobej30fs03m74n.jpg" alt="222"></p>
+<ul>
+<li>Build Phases</li>
+</ul>
+<p>添加Run Script</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fdgq4o44sjj30mg05k0ta.jpg" alt="222"></p>
+<p>添加”$PROJECT_DIR/iOS_Unity_Test01/Unity/MapFileParser.sh”</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdgq7dgx89j30st098js0.jpg" alt="222"></p>
+<ul>
+<li>新建PCH文件，命名为PrefixHeader。将Classes中的Prefix.pch文件的内容全部拷贝到Supporting Files中的PrefixHeader.pch中，并删除Classes中的Prefix.pch文件引用</li>
+<li>将Classes/main.mm全部内容复制到main.m并把扩展名改为.mm，然后删除Classes/main.mm文件引用，注意红色框圈住的修改细节</li>
+</ul>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fdgql76hiuj30ou0fkn0n.jpg" alt="222"></p>
+<ul>
+<li><p>修改UnityAppController.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#import &quot;AppDelegate.h&quot;</div><div class="line">inline UnityAppController*	GetAppController()</div><div class="line">&#123;</div><div class="line">    return (UnityAppController *)[[UIApplication sharedApplication] valueForKeyPath:@&quot;delegate.unityController&quot;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改AppDelegate.h</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">#import &quot;UnityAppController.h&quot;</div><div class="line"></div><div class="line">@interface AppDelegate : UIResponder &lt;UIApplicationDelegate&gt;</div><div class="line"></div><div class="line">@property (strong, nonatomic) UIWindow *window;</div><div class="line">@property (strong, nonatomic) UIWindow *unityWindow;</div><div class="line">@property (strong, nonatomic) UnityAppController *unityController;</div><div class="line"></div><div class="line">- (void)showUnityWindow;</div><div class="line">- (void)hideUnityWindow;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<ul>
+<li>修改AppDelegate.m</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">@implementation AppDelegate</div><div class="line"></div><div class="line">- (UIWindow *)unityWindow &#123;</div><div class="line">    return UnityGetMainWindow();</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)showUnityWindow &#123;</div><div class="line">    [self.unityWindow makeKeyAndVisible];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)hideUnityWindow &#123;</div><div class="line">    [self.window makeKeyAndVisible];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</div><div class="line">    // Override point for customization after application launch.</div><div class="line">    </div><div class="line">    _unityController = [[UnityAppController alloc] init];</div><div class="line">    [_unityController application:application didFinishLaunchingWithOptions:launchOptions];</div><div class="line">    </div><div class="line">    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];</div><div class="line">    TestViewController *vc = [[TestViewController alloc] init];</div><div class="line">    self.window.rootViewController = vc;</div><div class="line">    [self.window makeKeyAndVisible];</div><div class="line">    </div><div class="line">    return YES;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)applicationWillResignActive:(UIApplication *)application &#123;</div><div class="line">    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.</div><div class="line">    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.</div><div class="line">    [_unityController applicationWillResignActive:application];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)applicationDidEnterBackground:(UIApplication *)application &#123;</div><div class="line">    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.</div><div class="line">    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.</div><div class="line">    [_unityController applicationDidEnterBackground:application];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)applicationWillEnterForeground:(UIApplication *)application &#123;</div><div class="line">    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.</div><div class="line">    [_unityController applicationWillEnterForeground:application];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)applicationDidBecomeActive:(UIApplication *)application &#123;</div><div class="line">    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</div><div class="line">    [_unityController applicationDidBecomeActive:application];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)applicationWillTerminate:(UIApplication *)application &#123;</div><div class="line">    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.</div><div class="line">    [_unityController applicationWillTerminate:application];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<h2 id="集成过程中遇见的一些问题"><a href="#集成过程中遇见的一些问题" class="headerlink" title="集成过程中遇见的一些问题"></a>集成过程中遇见的一些问题</h2><ol>
+<li>编译完成出现许多<code>Code will never be executed</code>的警告⚠️</li>
+</ol>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fdd7hrn1pjj304x010mx1.jpg" alt="111"></p>
+<p>解决方法：在<code>Build Settings</code>中将<code>Unreachable Code</code>设置为<strong>No</strong>可以消除警告</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fdd7jiejdqj30c700n3yd.jpg" alt="222"></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://docs.unity3d.com/Manual/class-PlayerSettingsiOS.html" target="_blank" rel="external">iOS Player Settings</a></p>
+<p><a href="http://www.jianshu.com/p/49fffc543140" target="_blank" rel="external">Unity3D工程并入iOS工程总结</a></p>
+<p><a href="http://www.jianshu.com/p/f98bcfe09dc7" target="_blank" rel="external">unity3D与iOS原生工程项目合并以及合并过程中的问题</a></p>
+<p><a href="http://blog.csdn.net/dylan_lwb_/article/details/51452470" target="_blank" rel="external">iOS - 将Unity导出的Xcode工程导入到另一个Xcode项目, 及常见报错的解决方法</a></p>
+<p><a href="http://www.jianshu.com/p/487015f3bb13" target="_blank" rel="external">将U3d工程嵌入iOS工程中</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在研究Unity导出的Xcode工程如何集成在现有工程中。现将过程中遇见的问题整理如下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://willwei.me/tags/iOS/"/>
+    
+      <category term="Unity" scheme="http://willwei.me/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>对未来职业方向的一些想法</title>
+    <link href="http://willwei.me/2017/03/01/%E5%AF%B9%E6%9C%AA%E6%9D%A5%E8%81%8C%E4%B8%9A%E6%96%B9%E5%90%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/"/>
+    <id>http://willwei.me/2017/03/01/对未来职业方向的一些想法/</id>
+    <published>2017-03-01T01:49:46.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>进入2017年，互联网资本寒冬依然在持续，随着现在公司的业务调整，重心放在行业应用，自己公司的产品放缓，运营部已快解散，对未来的方向产生了一些迷茫。</p>
+<ul>
+<li>继续深挖iOS</li>
+<li>结合现有公司资源做一部分Unity工作</li>
+<li>兼职一部分后台工作</li>
+</ul>
+<a id="more"></a>
+<h2 id="继续深挖iOS"><a href="#继续深挖iOS" class="headerlink" title="继续深挖iOS"></a>继续深挖iOS</h2><p>此方向在现有公司已不适合发展。</p>
+<ol>
+<li>公司是做PC端VR应用的，移动端开发不是重点。</li>
+<li>公司缺乏技术沉淀</li>
+<li>没有iOS开发的高级人员</li>
+<li>业务已转型，运营部解散，后台已走</li>
+</ol>
+<p>选择此方向面临的第一个问题便是找下家，寻找主做移动端技术的公司。不过由于现在不想离开这家公司，待考虑。</p>
+<p><a href="https://www.zhihu.com/question/39597307" target="_blank" rel="external">iOS高级工程师进阶</a></p>
+<h2 id="结合现有公司资源做一部分Unity工作"><a href="#结合现有公司资源做一部分Unity工作" class="headerlink" title="结合现有公司资源做一部分Unity工作"></a>结合现有公司资源做一部分Unity工作</h2><p>公司毕竟是做VR/AR的，在图形图像方面还是有一定的积累，也会做一些培训工作，并且这个方向也是我比较喜欢的，<a href="https://onevcat.com/" target="_blank" rel="external">OneV’s Den</a>也是iOS/Unity开发者，是我一直想学习的。最近看了一点Unity的学习资料，整体来说Unity还是比较轻松的，比UE简单很多。iOS/Unity并重的话，或许来个手游开发？</p>
+<h2 id="兼职一部分后台工作"><a href="#兼职一部分后台工作" class="headerlink" title="兼职一部分后台工作"></a>兼职一部分后台工作</h2><p>现在公司APP开发放缓，后台也走人了，还不招人，想要继续搞下去，必须得有人兼职一部分后台的工作，考虑到以后回成都发展，想要好找工作的话还是JAVA合适点，或许可以看看。</p>
+<h2 id="附上一张知乎-张宇上看到的iOS技能树"><a href="#附上一张知乎-张宇上看到的iOS技能树" class="headerlink" title="附上一张知乎@张宇上看到的iOS技能树"></a>附上一张知乎@<a href="https://www.zhihu.com/people/ygsay.com" target="_blank" rel="external">张宇</a>上看到的iOS技能树</h2><p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fd751ueum5j31js2cqnec.jpg" alt="iOS技能树"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;进入2017年，互联网资本寒冬依然在持续，随着现在公司的业务调整，重心放在行业应用，自己公司的产品放缓，运营部已快解散，对未来的方向产生了一些迷茫。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;继续深挖iOS&lt;/li&gt;
+&lt;li&gt;结合现有公司资源做一部分Unity工作&lt;/li&gt;
+&lt;li&gt;兼职一部分后台工作&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://willwei.me/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac系统隐藏文件的设置</title>
+    <link href="http://willwei.me/2017/02/24/Mac%E7%B3%BB%E7%BB%9F%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%9A%84%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://willwei.me/2017/02/24/Mac系统隐藏文件的设置/</id>
+    <published>2017-02-24T02:28:50.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>显示Mac隐藏文件的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ defaults write com.apple.finder AppleShowAllFiles YES</div></pre></td></tr></table></figure>
+<p>隐藏Mac隐藏文件的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ defaults write com.apple.finder AppleShowAllFiles NO</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;显示Mac隐藏文件的命令&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="http://willwei.me/tags/Mac/"/>
+    
+      <category term="奇淫巧技" scheme="http://willwei.me/tags/%E5%A5%87%E6%B7%AB%E5%B7%A7%E6%8A%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS开发常用宏整理</title>
+    <link href="http://willwei.me/2017/02/20/iOS%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%AE%8F%E6%95%B4%E7%90%86/"/>
+    <id>http://willwei.me/2017/02/20/iOS开发常用宏整理/</id>
+    <published>2017-02-20T02:01:26.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用宏不仅方便，而且可以提高开发效率。整理了一下在自己项目中常用的宏。<br>以下均写在<code>Macro.h</code>文件中。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">// 一些缩写</div><div class="line">#define kApplication            [UIApplication sharedApplication]</div><div class="line">#define kKeyWindow              [UIApplication sharedApplication].keyWindow</div><div class="line">#define kAppDelegate            [UIApplication sharedApplication].delegate</div><div class="line">#define kUserDefaults           [NSUserDefaults standardUserDefaults]</div><div class="line">#define kNotificationCenter     [NSNotificationCenter defaultCenter]</div><div class="line">#define kDevice                 [UIDevice currentDevice]</div><div class="line"></div><div class="line">// 获取屏幕宽度与高度</div><div class="line">#define SCREEN_WIDTH            [UIScreen mainScreen].bounds.size.width</div><div class="line">#define SCREEN_HEIGHT           [UIScreen mainScreen].bounds.size.height</div><div class="line">#define SCREEN_SIZE             [UIScreen mainScreen].bounds.size</div><div class="line">#define SCREEN_MAX_LENGTH       MAX(SCREEN_WIDTH, SCREEN_HEIGHT)</div><div class="line">#define SCREEN_MIN_LENGTH       MIN(SCREEN_WIDTH, SCREEN_HEIGHT)</div><div class="line"></div><div class="line">// 字符串是否为空</div><div class="line">#define kStringIsEmpty(str)     (str == nil || [str isKindOfClass:[NSNull class]] || str.length == 0)</div><div class="line">// 数组是否为空</div><div class="line">#define kArrayIsEmpty(array)    (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)</div><div class="line">// 字典是否为空</div><div class="line">#define kDictIsEmpty(dict)      (dict == nil || [dict isKindOfClass:[NSNull class]] || dict.allKeys.count == 0)</div><div class="line">// 是否是空对象</div><div class="line">#define kObjectIsEmpty(_object) (_object == nil || [_object isKindOfClass:[NSNull class]] || ([_object respondsToSelector:@selector(length)] &amp;&amp; [(NSData *)_object length] == 0) || ([_object respondsToSelector:@selector(count)] &amp;&amp; [(NSArray *)_object count] == 0))</div><div class="line">// 判断是否为iPhone</div><div class="line">#define IS_IPHONE               (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)</div><div class="line">// 判断是否为iPad</div><div class="line">#define IS_IPAD                 (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)</div><div class="line">// 判断型号尺寸.5为4寸机型，6为4.7寸机型，6P为5.5寸机型</div><div class="line">#define IS_IPHONE_4_OR_LESS     (IS_IPHONE &amp;&amp; SCREEN_MAX_LENGTH &lt; 568.f)</div><div class="line">#define IS_IPHONE_5             (IS_IPHONE &amp;&amp; SCREEN_MAX_LENGTH == 568.f)</div><div class="line">#define IS_IPHONE_6             (IS_IPHONE &amp;&amp; SCREEN_MAX_LENGTH == 667.f)</div><div class="line">#define IS_IPHONE_6P            (IS_IPHONE &amp;&amp; SCREEN_MAX_LENGTH == 736.f)</div><div class="line"></div><div class="line">// APP名称</div><div class="line">#define kAppName                [[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleDisplayName&quot;]</div><div class="line">// APP版本号</div><div class="line">#define kAppVersion             [[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;]</div><div class="line">// APP build号</div><div class="line">#define kAppbuild               [[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleVersion&quot;]</div><div class="line">// 系统版本号</div><div class="line">#define kSystemVersion          [[UIDevice currentDevice] systemVersion]</div><div class="line">// 获取当前语言</div><div class="line">#define kCurrentLanguage        [[NSLocale preferredLanguages] objectAtIndex:0]</div><div class="line">// 获取沙盒Documents路径</div><div class="line">#define kDocumentsPath          [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]</div><div class="line">// 获取沙盒temp路径</div><div class="line">#define kTempPath               NSTemporaryDirectory()</div><div class="line">// 获取沙盒Cache路径</div><div class="line">#define kCachePath              [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]</div><div class="line"></div><div class="line">// 颜色</div><div class="line">#define kRGBColor(r, g, b)      [UIColor colorWithRed:(r) / 255.f green:(g) / 255.f blue:(b) / 255.f alpha:1.f]</div><div class="line">#define kRGBAColor(r, g, b, a)  [UIColor colorWithRed:(r) / 255.f green:(r) / 255.f blue:(r) / 255.f alpha:a]</div><div class="line">#define kRandomColor            kRGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))</div><div class="line">#define kColorWithHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue &amp; 0xFF0000) &gt;&gt; 16)) / 255.f green:((float)((rgbValue &amp; 0xFF00) &gt;&gt; 8)) / 255.f blue:((float)(rgbValue &amp; 0xFF)) / 255.f alpha:1.f]</div><div class="line"></div><div class="line">// 弱引用/强引用.在Code Snippet中添加@kWeakObj(&lt;#obj#&gt;)和@kStrongObj(&lt;#obj#&gt;);</div><div class="line">#define kWeakObj(obj)           autoreleasepool&#123;&#125; __weak typeof(obj) weak##obj = obj;</div><div class="line">#define kStrongObj(obj)         autoreleasepool&#123;&#125; __strong typeof(obj) obj = weak##obj;</div><div class="line"></div><div class="line">// 由角度转换弧度</div><div class="line">#define kDegreesToRadian(x)     (M_PI * x / 180.f)</div><div class="line">// 由弧度转换角度</div><div class="line">#define kRadianToDegrees(x)     (x * 180.f) / (M_PI)</div><div class="line"></div><div class="line">// 获取一段时间间隔</div><div class="line">#define kStartTime              CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();</div><div class="line">#define kEndTime                NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)</div><div class="line"></div><div class="line">// 开发的时候打印，但是发布的时候不打印的NSLog</div><div class="line">#ifdef DEBUG</div><div class="line">    #define NSLog(...)          NSLog(@&quot;%s [Line %d]\n%@&quot;, __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])</div><div class="line">//    #define DLog(fmt, ...)      NSLog((@&quot;%s [Line %d]\n&quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);</div><div class="line">#else</div><div class="line">    #define NSLog(...)</div><div class="line">//    #define DLog(...)</div><div class="line">#endif</div><div class="line"></div><div class="line">// 判断是真机还是模拟器</div><div class="line">#if TARGET_OS_IPHONE</div><div class="line">// 真机</div><div class="line">#endif</div><div class="line"></div><div class="line">#if TARGET_IPHONE_SIMULATOR</div><div class="line">// 模拟器</div><div class="line">#endif</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用宏不仅方便，而且可以提高开发效率。整理了一下在自己项目中常用的宏。&lt;br&gt;以下均写在&lt;code&gt;Macro.h&lt;/code&gt;文件中。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://willwei.me/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CocoaPods使用备忘录</title>
+    <link href="http://willwei.me/2017/02/17/CocoaPods%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>http://willwei.me/2017/02/17/CocoaPods使用备忘录/</id>
+    <published>2017-02-17T02:07:32.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>CocoaPods 安装</li>
+</ol>
+<p>如果网络已经翻墙，在终端中运行如下命令直接安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>如果没翻墙，可以通过国内 Ruby China 或淘宝的 RubyGems 镜像进行安装。<br>在终端依次运行以下命令：<br>移除ruby的原生镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem sources --remove https://rubygems.org/</div></pre></td></tr></table></figure>
+<p>用淘宝的镜像代替（淘宝的<a href="https://ruby.taobao.org/" target="_blank" rel="external">镜像源</a>停止更新了，请使用<strong>Ruby China</strong>的<a href="https://gems.ruby-china.org/" target="_blank" rel="external">镜像</a>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem sources -a https://ruby.taobao.org/</div></pre></td></tr></table></figure>
+<p>用Ruby China的镜像代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem sources --add https://gems.ruby-china.org/</div></pre></td></tr></table></figure></p>
+<p>查看是否设置成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gem sources -l</div><div class="line"></div><div class="line">如果输出结果是如下这样，那说明这一步就成功了。</div><div class="line">*** CURRENT SOURCES ***</div><div class="line"></div><div class="line">https://gems.ruby-china.org/</div></pre></td></tr></table></figure></p>
+<p>安装Cocoapods<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods</div></pre></td></tr></table></figure></p>
+<ol>
+<li>其他一些命令<br>查询Cocoapods是否支持某个类库<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod search 类库名</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这个命令搜索的是本机上的最新版本，并没有联网查询。如果运行以上命令，没有搜到或者搜不到最新版本，可以运行以下命令，更新一下本地的 CocoaPods 源列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo update</div></pre></td></tr></table></figure></p>
+<p>打开终端，进入到工程目录，执行以下命令，会自动生成一个 Podfile 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod init</div></pre></td></tr></table></figure></p>
+<p>安装框架<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure></p>
+<p>更新框架<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pod update</div><div class="line">或</div><div class="line"># 禁止升级 CocoaPods 的 spec 仓库，否则会卡在 Analyzing dependencies，非常慢</div><div class="line">pod update --verbose --no-repo-update</div></pre></td></tr></table></figure></p>
+<p>如果提示找不到库，则可去掉<code>--no-repo-update</code>。</p>
+<p>在CocoaPods 中，有几种设置类库版本的方法。如：</p>
+<p>>= 1.10.X 会根据本地的 CocoaPods 源列表，导入不低于 1.10.X 版本的类库。</p>
+<p>~&gt; 1.10.X 会根据本地的 CocoaPods 源列表，介于 1.10.X~1.11.0 之前版本的类库。 建议锁定版本，便于团队开发。如，指定 1.10.0 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &apos;类库名&apos;, &apos;1.10.0&apos;</div></pre></td></tr></table></figure>
+<p>清除 Cocoapods 本地缓存<br>特殊情况下，由于网络或者别的原因，通过 CocoaPods 下载的文件可能会有问题。<br>这时候可以删除 CocoaPods 的缓存(~/Library/Caches/CocoaPods/Pods/Release 目录)，再次导入即可。</p>
+<p>关于 CocoaPods 的更多内容，可以参考 <a href="https://cocoapods.org/" target="_blank" rel="external">CocoaPods 文档</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;CocoaPods 安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果网络已经翻墙，在终端中运行如下命令直接安装：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo gem install cocoapods&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://willwei.me/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS自定义视图四个角的圆角</title>
+    <link href="http://willwei.me/2017/02/16/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE%E5%9B%9B%E4%B8%AA%E8%A7%92%E7%9A%84%E5%9C%86%E8%A7%92/"/>
+    <id>http://willwei.me/2017/02/16/iOS自定义视图四个角的圆角/</id>
+    <published>2017-02-16T08:13:53.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近有一个需求：一个视图下面两个角需要圆角，而上面两个角不需要。</p>
+<p>可以使用UIBezierPath和CAShapeLayer结合实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (UIBezierPath *)bezierPathWithRoundedRect:(CGRect)rect byRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;</div></pre></td></tr></table></figure>
+<p>参数corners指定了想要需要成为圆角的角。可选值为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">typedef NS_OPTIONS(NSUInteger, UIRectCorner) &#123;</div><div class="line">    UIRectCornerTopLeft     = 1 &lt;&lt; 0,</div><div class="line">    UIRectCornerTopRight    = 1 &lt;&lt; 1,</div><div class="line">    UIRectCornerBottomLeft  = 1 &lt;&lt; 2,</div><div class="line">    UIRectCornerBottomRight = 1 &lt;&lt; 3,</div><div class="line">    UIRectCornerAllCorners  = ~0UL</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>使用示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];</div><div class="line">view.backgroundColor = [UIColor redColor];</div><div class="line">[self.view addSubview:view];</div><div class="line">    </div><div class="line">UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];</div><div class="line">CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];</div><div class="line">maskLayer.frame = view.bounds;</div><div class="line">maskLayer.path = maskPath.CGPath;</div><div class="line">view.layer.mask = maskLayer;</div></pre></td></tr></table></figure>
+<p>如果需要将UIView的4个角全部都为圆角，做法相当简单，只需设置其Layer的cornerRadius属性即可。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近有一个需求：一个视图下面两个角需要圆角，而上面两个角不需要。&lt;/p&gt;
+&lt;p&gt;可以使用UIBezierPath和CAShapeLayer结合实现&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;+ (UIBezierPath *)bezierPathWithRoundedRect:(CGRect)rect byRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;参数corners指定了想要需要成为圆角的角。可选值为：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;typedef NS_OPTIONS(NSUInteger, UIRectCorner) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    UIRectCornerTopLeft     = 1 &amp;lt;&amp;lt; 0,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    UIRectCornerTopRight    = 1 &amp;lt;&amp;lt; 1,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    UIRectCornerBottomLeft  = 1 &amp;lt;&amp;lt; 2,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    UIRectCornerBottomRight = 1 &amp;lt;&amp;lt; 3,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    UIRectCornerAllCorners  = ~0UL&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://willwei.me/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS如何利用runtime向Category添加属性</title>
+    <link href="http://willwei.me/2017/02/05/iOS%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8runtime%E5%90%91Category%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7/"/>
+    <id>http://willwei.me/2017/02/05/iOS如何利用runtime向Category添加属性/</id>
+    <published>2017-02-05T06:56:14.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Associated-Objects"><a href="#Associated-Objects" class="headerlink" title="Associated Objects"></a>Associated Objects</h1><ul>
+<li>使用runtime需导入头文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>以下方法允许对象在运行时通过键关联任意值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">objc_getAssociatedObject(id object, const void *key);</div><div class="line">objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Associative-Object-Behaviors"><a href="#Associative-Object-Behaviors" class="headerlink" title="Associative Object Behaviors"></a>Associative Object Behaviors</h2><ul>
+<li>在runtime.h中的定义</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Policies related to associative references.</div><div class="line"> * These are options to objc_setAssociatedObject()</div><div class="line"> */</div><div class="line">typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) &#123;</div><div class="line">    OBJC_ASSOCIATION_ASSIGN = 0,           /**&lt; Specifies a weak reference to the associated object. */</div><div class="line">    OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, /**&lt; Specifies a strong reference to the associated object. </div><div class="line">                                            *   The association is not made atomically. */</div><div class="line">    OBJC_ASSOCIATION_COPY_NONATOMIC = 3,   /**&lt; Specifies that the associated object is copied. </div><div class="line">                                            *   The association is not made atomically. */</div><div class="line">    OBJC_ASSOCIATION_RETAIN = 01401,       /**&lt; Specifies a strong reference to the associated object.</div><div class="line">                                            *   The association is made atomically. */</div><div class="line">    OBJC_ASSOCIATION_COPY = 01403          /**&lt; Specifies that the associated object is copied.</div><div class="line">                                            *   The association is made atomically. */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>根据枚举类型objc_AssociationPolicy定义的行为，可以将值关联到对象上</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Behavior</th>
+<th style="text-align:center">@property Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_ASSIGN</td>
+<td style="text-align:center">@property (assign) 或 @property (unsafe_unretained)</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_RETAIN_NONATOMIC</td>
+<td style="text-align:center">@property (nonatomic, strong)</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_COPY_NONATOMIC</td>
+<td style="text-align:center">@property (nonatomic, copy)</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_RETAIN</td>
+<td style="text-align:center">@property (atomic, strong)</td>
+</tr>
+<tr>
+<td style="text-align:center">OBJC_ASSOCIATION_COPY</td>
+<td style="text-align:center">@property (atomic, copy)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><h3 id="NSObject-AssociatedObject-h"><a href="#NSObject-AssociatedObject-h" class="headerlink" title="NSObject+AssociatedObject.h"></a>NSObject+AssociatedObject.h</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface NSObject (AssociatedObject)</div><div class="line">@property (nonatomic, strong) id associatedObject;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h3 id="NSObject-AssociatedObject-m"><a href="#NSObject-AssociatedObject-m" class="headerlink" title="NSObject+AssociatedObject.m"></a>NSObject+AssociatedObject.m</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@implementation NSObject (AssociatedObject)</div><div class="line">@dynamic associatedObject;</div><div class="line"></div><div class="line">- (void)setAssociatedObject:(id)object &#123;</div><div class="line">     objc_setAssociatedObject(self, @selector(associatedObject), object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (id)associatedObject &#123;</div><div class="line">    return objc_getAssociatedObject(self, @selector(associatedObject));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通常建议键是一个静态字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">static char kAssociatedObjectKey;</div><div class="line">objc_getAssociatedObject(self, &amp;kAssociatedObjectKey);</div></pre></td></tr></table></figure>
+<p>当然，存在一个简单得多的解决方案：只需使用selector。</p>
+<p>更详细的参考请访问[<a href="http://nshipster.com/associated-objects/" target="_blank" rel="external">Associated Objects</a>]</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Associated-Objects&quot;&gt;&lt;a href=&quot;#Associated-Objects&quot; class=&quot;headerlink&quot; title=&quot;Associated Objects&quot;&gt;&lt;/a&gt;Associated Objects&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;使用runtime需导入头文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;#import &amp;lt;objc/runtime.h&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;以下方法允许对象在运行时通过键关联任意值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;objc_getAssociatedObject(id object, const void *key);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://willwei.me/tags/iOS/"/>
+    
+      <category term="runtime" scheme="http://willwei.me/tags/runtime/"/>
+    
+      <category term="Category" scheme="http://willwei.me/tags/Category/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写在2017开端</title>
+    <link href="http://willwei.me/2017/02/04/%E5%86%99%E5%9C%A82017%E5%BC%80%E7%AB%AF/"/>
+    <id>http://willwei.me/2017/02/04/写在2017开端/</id>
+    <published>2017-02-04T01:59:05.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h2><p>过去的2016，是自己的本命年，也是自己毕业后在深圳度过的第一个完整年份。这一年，算是自己的一个转折之年，没有了初入社会的忐忑，在深圳安定了下来，学到了许许多多的东西，也结交了很多好朋友。</p>
+<p>这一年收获无疑是巨大的，对后续人生影响是不可估量的，感谢2016。</p>
+<h2 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h2><p>2017年，是安心学习沉淀自己技术的一年，牢记。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;2016&quot;&gt;&lt;a href=&quot;#2016&quot; class=&quot;headerlink&quot; title=&quot;2016&quot;&gt;&lt;/a&gt;2016&lt;/h2&gt;&lt;p&gt;过去的2016，是自己的本命年，也是自己毕业后在深圳度过的第一个完整年份。这一年，算是自己的一个转折之年，没有了初入社会的忐
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://willwei.me/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一个博客发文</title>
+    <link href="http://willwei.me/2017/01/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2%E5%8F%91%E6%96%87/"/>
+    <id>http://willwei.me/2017/01/22/我的第一个博客发文/</id>
+    <published>2017-01-22T07:59:51.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>为了更好的明天</p>
+</blockquote>
+<p>第一个博客采用了<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">hexo</a>，主题用的是<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia</a>，在此感谢为此做出贡献的大神。</p>
+<p>2016年就想搭建自己的博客来总结自己的得失，一直拖到现在才搭建好。刚入社会的坎坷已经过去，陆陆续续学到了很多东西，是时候记录总结了。以后会陆陆续续开始写博客啦，还可以锻炼下自己渣到吐的文字表达能力，加油~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;为了更好的明天&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第一个博客采用了&lt;a href=&quot;https://github.com/hexojs/hexo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo&lt;/a&gt;，主题用的是&lt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://willwei.me/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://willwei.me/2017/01/20/hello-world/"/>
+    <id>http://willwei.me/2017/01/20/hello-world/</id>
+    <published>2017-01-19T16:00:00.000Z</published>
+    <updated>2017-04-28T01:58:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://willwei.me/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
