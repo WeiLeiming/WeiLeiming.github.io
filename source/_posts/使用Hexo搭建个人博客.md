@@ -9,6 +9,8 @@ typora-copy-images-to: ipic
 
 总结下自己用[Hexo](https://github.com/hexojs/hexo)搭建博客的过程。整个博客是挂在GitHub Pages上的，域名是自己买的，搭建时Hexo是3.2.2版本，因为自己用的Mac电脑，所以此篇适用于苹果电脑。废话不多说，正式开始吧。
 
+[WeiLeiming/weileiming.github.io](https://github.com/WeiLeiming/weileiming.github.io)
+
 <!-- more -->
 
 # 环境配置
@@ -176,3 +178,21 @@ $ npm upgrade hexo
 $ cd themes/yilia
 $ git pull
 ```
+# 参考资料
+
+[最简便的方法搭建Hexo-Github博客-基于Next主题](http://www.jianshu.com/p/5e9bd5e39ae6)
+
+[Hexo折腾记——基本配置篇](https://yq.aliyun.com/articles/8607)
+
+[如何搭建一个独立博客——简明Github Pages与Hexo教程](http://www.jianshu.com/p/05289a4bc8b2)
+
+[HEXO搭建个人博客](http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/)
+
+[GithubPages+Hexo博客主题Yilia](http://www.jianshu.com/p/f389ad8c49bd)
+
+[Hexo常见问题解决方案](http://wp.huangshiyang.com/hexo%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
+
+[Hexo Seo优化让你的博客在google搜索排名第一](http://www.jianshu.com/p/86557c34b671)
+
+[Next官方文档](http://theme-next.iissnan.com/getting-started.html)
+
