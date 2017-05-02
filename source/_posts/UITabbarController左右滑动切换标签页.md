@@ -1,6 +1,7 @@
 ---
 title: UITabbarController左右滑动切换标签页
 date: 2017-04-12 09:25:03
+categories: iOS
 tags:
 	- iOS
 ---

@@ -1,6 +1,7 @@
 ---
 title: CocoaPods使用备忘录
 date: 2017-02-17 10:07:32
+categories: iOS
 tags:
 	- iOS
 ---

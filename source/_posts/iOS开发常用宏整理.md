@@ -1,6 +1,7 @@
 ---
 title: iOS开发常用宏整理
 date: 2017-02-20 10:01:26
+categories: iOS
 tags:
 	- iOS
 ---

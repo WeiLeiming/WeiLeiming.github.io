@@ -1,6 +1,7 @@
 ---
 title: iOS自定义视图四个角的圆角
 date: 2017-02-16 16:13:53
+categories: iOS
 tags:
 	- iOS
 ---

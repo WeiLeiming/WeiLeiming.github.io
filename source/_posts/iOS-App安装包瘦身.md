@@ -1,6 +1,7 @@
 ---
 title: iOS App安装包瘦身
 date: 2017-04-19 16:53:52
+categories: iOS
 tags:
 	- iOS
 ---

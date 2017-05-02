@@ -1,6 +1,7 @@
 ---
 title: iOS如何利用runtime向Category添加属性
 date: 2017-02-05 14:56:14
+categories: iOS
 tags:
 	- iOS
 	- runtime
