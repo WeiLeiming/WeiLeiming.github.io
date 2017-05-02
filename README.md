@@ -9,7 +9,7 @@
 
 ## 自动部署
 
-使用自动部署后，主题使用`Next`的`Release`版本，不再从作者的仓库拉取，不然会出错，将主题所有原文件上传至自己的仓库
+使用自动部署后，主题使用`Next`的[Release](https://github.com/iissnan/hexo-theme-next/releases)版本，不再从作者的仓库拉取，不然会出错，将主题所有原文件上传至自己的仓库
 
 ### 参考资料
 

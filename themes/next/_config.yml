@@ -303,7 +303,7 @@ disqus:
   count: true
 
 # Hypercomments
-#hypercomments_id:
+hypercomments_id: 90380
 
 # Gentie productKey
 #gentie_productKey:
