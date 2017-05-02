@@ -85,8 +85,9 @@ feed:
     path: atom.xml
     limit: 100
 
-search:
-  path: search.xml
-  field: post
-  format: html
-  limit: 10000
+algolia:
+  applicationID: TRY8SX7BKP
+  apiKey: a65d0a4fbe7d5f1a35762a6898ea55f2
+  adminApiKey: f8ac8d78a177fd9f2d3b79e20b505dc3
+  indexName: blog
+  chunkSize: 5000
