@@ -339,7 +339,7 @@ jiathis: true
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
-#google_site_verification:
+google_site_verification: xrV3Blr-aJ8ys4XksZDm4TxN1UPIHQtA_bGfkPS4abw
 
 # Google Analytics
 google_analytics: UA-98388090-1
