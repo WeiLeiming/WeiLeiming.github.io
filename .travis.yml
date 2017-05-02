@@ -12,7 +12,7 @@ script:
   - hexo generate
 
 after_script:
-  #- cd ./public
+  # - cd ./public
   #- git init
   #- git config user.name "WillWei"
   #- git config user.email "2008weileiming@gmail.com"
