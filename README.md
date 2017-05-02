@@ -1,9 +1,9 @@
-# 博客管理
+# 博客
 
 - master 分支: 发布博客
 - source 分支: 管理博客源文件
 
-## 自动构建:
+## 自动部署
 
 [Continuous Integration Your Hexo Blog With Travis CI](http://blog.bigruan.com/2015-03-09-Continuous-Integration-Your-Hexo-Blog-With-TravisCI/)
 
