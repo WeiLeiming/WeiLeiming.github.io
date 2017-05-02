@@ -1,9 +1,17 @@
 # 博客
 
-- master 分支: 发布博客
-- source 分支: 管理博客源文件
+- `master` 分支: 博客静态网页
+- `source` 分支: 博客源文件
+
+## 搭建方法
+
+[使用Hexo搭建个人博客](http://willwei.me/2017/03/09/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/)
 
 ## 自动部署
+
+使用自动部署后，主题使用`Next`的`Release`版本，不再从作者的仓库拉取，不然会出错，将主题所有原文件上传至自己的仓库
+
+### 参考资料
 
 [Continuous Integration Your Hexo Blog With Travis CI](http://blog.bigruan.com/2015-03-09-Continuous-Integration-Your-Hexo-Blog-With-TravisCI/)
 
@@ -16,3 +24,6 @@
 [使用Travis CI自动部署你的Hexo博客到Github](http://www.selfrebuild.net/2016/11/16/github-hexo-blog-auto-deploy/)
 
 [使用Travis Ci使hexo自动生成并部署](https://blog.xingoxu.com/2016/12/use-travis-ci-your-blog/)
+
+[Travis CI自动部署Hexo博客到Github](https://xin053.github.io/2016/06/05/Travis%20CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0Github/)
+
