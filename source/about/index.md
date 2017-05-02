@@ -2,6 +2,7 @@
 title: 关于
 date: 2017-04-28 20:08:00
 type: "about"
+comments: false
 ---
 
 WillWei,
