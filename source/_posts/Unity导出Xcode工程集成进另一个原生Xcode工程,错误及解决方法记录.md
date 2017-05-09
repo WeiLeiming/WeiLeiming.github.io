@@ -15,21 +15,22 @@ typora-copy-images-to: ipic
 
 1. MapFileParser.sh: Permission denied
 
-![ADB6928C-7EF7-4469-8CEC-856B504A63B3](https://ww3.sinaimg.cn/large/006tNc79ly1fd8c4lh1l8j30mv01dt96.jpg)
+   ![ADB6928C-7EF7-4469-8CEC-856B504A63B3](https://ww3.sinaimg.cn/large/006tNc79ly1fd8c4lh1l8j30mv01dt96.jpg)
 
-打开终端，进入`MapFileParser.sh`所在目录，执行
+   打开终端，进入`MapFileParser.sh`所在目录，执行
 
-```
-$ chmod 777 MapFileParser.sh
-```
+   ```
+   $ chmod 777 MapFileParser.sh
+   ```
 
 2. 推送警告
 
-![E432AF53-86D7-44A7-9649-F262E3EBC351](http://ww4.sinaimg.cn/large/006tKfTcly1ff1c19i81gj30n2014t93.jpg)
+   ![E432AF53-86D7-44A7-9649-F262E3EBC351](http://ww4.sinaimg.cn/large/006tKfTcly1ff1c19i81gj30n2014t93.jpg)
 
-解决方法Capablilties->Background Modes->Remote notifications
+   解决方法Capablilties->Background Modes->Remote notifications
 
-![75BDC5C5-7DC9-4CB4-A55C-1959E7198C10](http://ww4.sinaimg.cn/large/006tKfTcly1ff1bzgczroj30o40afta7.jpg)
+   ![75BDC5C5-7DC9-4CB4-A55C-1959E7198C10](http://ww4.sinaimg.cn/large/006tKfTcly1ff1bzgczroj30o40afta7.jpg)
+
 
 # Unity导出Xcode工程集成进原生Xcode工程
 
@@ -179,9 +180,11 @@ inline UnityAppController*	GetAppController()
 
 - (void)showUnityWindow {
     [self.unityWindow makeKeyAndVisible];
+  	UnityPause(false);
 }
 
 - (void)hideUnityWindow {
+  	UnityPause(true);
     [self.window makeKeyAndVisible];
 }
 
