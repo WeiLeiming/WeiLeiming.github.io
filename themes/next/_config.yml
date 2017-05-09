@@ -423,7 +423,7 @@ busuanzi_count:
 tencent_analytics: 61961707
 
 # Tencent MTA ID
-# tencent_mta:
+tencent_mta: 500449825
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
