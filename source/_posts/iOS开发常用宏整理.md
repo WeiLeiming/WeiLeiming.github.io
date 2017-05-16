@@ -69,8 +69,8 @@ tags:
 #define kColorWithHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.f green:((float)((rgbValue & 0xFF00) >> 8)) / 255.f blue:((float)(rgbValue & 0xFF)) / 255.f alpha:1.f]
 
 // 弱引用/强引用.在Code Snippet中添加@kWeakObj(<#obj#>)和@kStrongObj(<#obj#>);
-#define kWeakObj(obj)           autoreleasepool{} __weak typeof(obj) weak##obj = obj;
-#define kStrongObj(obj)         autoreleasepool{} __strong typeof(obj) obj = weak##obj;
+#define kWeakObj(obj)           autoreleasepool{} __weak __typeof(obj) weak##obj = obj;
+#define kStrongObj(obj)         autoreleasepool{} __strong __typeof(obj) obj = weak##obj;
 
 // 由角度转换弧度
 #define kDegreesToRadian(x)     (M_PI * x / 180.f)
