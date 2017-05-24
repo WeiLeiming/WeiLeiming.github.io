@@ -1,6 +1,7 @@
 ---
 title: 关于iOS文件系统
 date: 2017-05-22 11:42:27
+categories: iOS
 tags:
 	- iOS
 	- Translate
@@ -72,3 +73,4 @@ iOS中的文件系统处理数据文件的持久存储，应用程序和与操�
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
+
