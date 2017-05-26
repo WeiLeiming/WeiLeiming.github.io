@@ -7,7 +7,6 @@ tags:
 ---
 
 使用宏不仅方便，而且可以提高开发效率。整理了一下在自己项目中常用的宏。
-以下均写在`Macro.h`文件中。
 
 <!-- more -->
 
@@ -26,6 +25,8 @@ tags:
 #define SCREEN_SIZE             [UIScreen mainScreen].bounds.size
 #define SCREEN_MAX_LENGTH       MAX(SCREEN_WIDTH, SCREEN_HEIGHT)
 #define SCREEN_MIN_LENGTH       MIN(SCREEN_WIDTH, SCREEN_HEIGHT)
+#define SCREEN_SCALE_PORTRAIT   SCREEN_WIDTH / 375.0
+#define SCREEN_SCALE_LANDSCAPE  SCREEN_HEIGHT / 375.0
 
 // 字符串是否为空
 #define kStringIsEmpty(str)     (str == nil || [str isKindOfClass:[NSNull class]] || str.length == 0)
