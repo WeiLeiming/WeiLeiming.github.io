@@ -160,6 +160,49 @@ NSURL *url = [[NSBundle mainBundle] URLForResource:@"MyImage" withExtension:@"pn
 }
 ```
 
+### 使用书签查找文件
+
+如果想要永久保存文件的位置，使用`NSURL`的书签功能。书签是不透明的数据结构，封装在一个描述文件位置的`NSData`对象中。尽管路径和文件引用URL在应用程序启动之间可能会很脆弱，但是通常也可以使用书签来重新创建文件的URL，即使在文件被移动或重命名的情况下也是如此。
+
+要为现有URL创建一个书签，使用`NSURL`的`bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:`方法。指定`NSURLBookmarkCreationSuitableForBookmarkFile`选项创建一个适合保存到磁盘的`NSData`对象。以下是一个使用此方法创建书签数据对象的简单示例实现。
+
+```objective-c
+- (NSData *)bookmarkForURL:(NSURL *)url {
+    NSError *theError = nil;
+    NSData *bookmark = [url bookmarkDataWithOptions:NSURLBookmarkCreationSuitableForBookmarkFile
+                     includingResourceValuesForKeys:nil
+                                      relativeToURL:nil
+                                              error:&theError];
+    if (theError || (bookmark == nil)) {
+        // Handle any errors.
+        return nil;
+    }
+    return bookmark;
+}
+```
+
+如果使用`NSURL`的`writeBookmarkData:toURL:options:error:`方法将永久书签数据写入磁盘，系统在磁盘上创建的是一个别名文件。别名类似于符号链接，但实现方式不同。通常，当用户想要创建到系统其他位置的文件链接时，用户会从Finder创建别名。
+
+要将书签数据对象转换回URL，使用`NSURL`的`URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:`方法。以下显示了将书签转换为URL的过程。
+
+```objective-c
+- (NSURL *)urlForBookmark:(NSData *)bookmark {
+    BOOL bookmarkIsStale = NO;
+    NSError *theError = nil;
+    NSURL *bookmarkURL = [NSURL URLByResolvingBookmarkData:bookmark
+                                                   options:NSURLBookmarkResolutionWithoutUI
+                                             relativeToURL:nil
+                                       bookmarkDataIsStale:&bookmarkIsStale
+                                                     error:&theError];
+    
+    if (bookmarkIsStale || (theError != nil)) {
+        // Handle any errors
+        return nil;
+    }
+    return bookmarkURL;
+}
+```
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
