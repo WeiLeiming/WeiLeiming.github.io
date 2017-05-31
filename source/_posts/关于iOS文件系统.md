@@ -300,6 +300,19 @@ if (array == nil) {
 }
 ```
 
+## 确定存储App特定文件的位置
+
+`Library`目录是应用程序创建和管理文件的指定存储库。App是沙盒目录，这些目录可能在不同位置。结果是始终使用`NSFileManager`的`URLsForDirectory:inDomains:`方法与`NSUserDomainMask`作为域来定位要存储这些数据的特定目录。
+
+- 使用`Application Support`目录常量 `NSApplicationSupportDirectory`，将*<bundle_ID>*添加上：
+  - 应用程序为用户创建和管理的资源和数据文件。使用此目录来存储应用程序状态信息，计算或下载的数据，甚至用户创建的数据。
+  - 自动保存文件。
+- 使用`Caches`目录常量`NSCachesDirectory`，添加*<bundle_ID>*目录缓存数据文件或任何文件，应用程序可以轻松重新创建。
+- 使用`NSUserDefaults`类读取和写入偏好。该类自动将首选项写入适当的位置。
+- 使用`NSFileManager`方法`URLsForDirectory:inDomains:`获取存储临时文件的目录。临时文件是打算立即使用某些正在进行操作的文件，但是稍后打算丢弃。一旦完成，删除临时文件。
+
+如果在三天后不删除临时文件，系统可能会删除它们，无论是否使用它们。
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
