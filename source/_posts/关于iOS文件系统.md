@@ -274,6 +274,32 @@ for (NSString *path in directoryEnumerator) {
 }
 ```
 
+### 在单个批处理中获取目录的内容
+
+如果想要查看目录中的每一项，可以在方便的情况下检索项目的快照并对其进行迭代。在批处理操作中检索目录的内容不是枚举目录的最有效方法，因为文件管理器必须每次都遍历整个目录内容。但是，如果计划查看所有项目，那么检索项目是一种简单的方式。
+
+使用`NSFileManager`有以下两种选择方式对目录进行批枚举：
+
+- 执行浅枚举，使用`contentsOfDirectoryAtURL:includingPropertiesForKeys:options:error:`或`contentsOfDirectoryAtPath:error:`方法。
+- 执行深枚举并仅返回子目录，使用`subpathsOfDirectoryAtPath:error:`方法。
+
+以下代码是一个使用`contentsOfDirectoryAtURL:includingPropertiesForKeys:options:error:`方法枚举目录内容的示例。使用URL的好处之一是还可以有效地检索每项的其他信息。此示例检索目录中每项的本地化名称，创建日期和类型信息，并将该信息存储在相应的`NSURL`对象中。当该方法返回时，可以继续迭代`array`变量中的项目，并使用它们进行所需操作。
+
+```objective-c
+NSURL *url = <#A URL for a directory#>;
+NSError *error = nil;
+NSArray *properties = [NSArray arrayWithObjects: NSURLLocalizedNameKey,
+                       NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey, nil];
+NSArray *array = [[NSFileManager defaultManager]
+                  contentsOfDirectoryAtURL:url
+                  includingPropertiesForKeys:properties
+                  options:(NSDirectoryEnumerationSkipsHiddenFiles)
+                  error:&error];
+if (array == nil) {
+    // Handle the error
+}
+```
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
