@@ -203,6 +203,77 @@ NSURL *url = [[NSBundle mainBundle] URLForResource:@"MyImage" withExtension:@"pn
 }
 ```
 
+## 枚举目录的内容
+
+要发现给定目录的内容需要枚举该目录。Cocoa支持一次枚举一个目录一个文件或一次所有。无论选择哪个，谨慎枚举目录。每次枚举都可以触及大量的文件和子目录，这很快将变得代价昂贵。
+
+### 一次枚举一个目录一个文件
+
+当要搜索特定文件并在找到该文件时停止枚举，建议一次枚举一个目录一个文件。逐个文件枚举使用`NSDirectoryEnumerator`类，该类定义了检索项目的方法。因为`NSDirectoryEnumerator`本身是一个抽象类，所以不能直接创建它的实例。相反，可以使用`enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:`或`NSFileManager`对象的`enumeratorAtPath:`方法来获取用于枚举的类的具体实例。
+
+枚举器对象返回枚举目录中的所有文件和目录的路径。因为枚举是递归和跨设备边界的，所返回的文件和目录的数量可能超过起始目录中的内容。可以通过调用枚举器对象的`skipDescendents`方法来跳过不感兴趣目录的内容。枚举器对象不会解析符号链接或尝试遍历指向目录的符号链接。
+
+以下代码显示了如何使用该 `enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:`方法列出给定目录的所有用户可见子目录，注意它们是目录还是文件包。该`keys`数组告诉枚举器对象为每个项目预取和缓存信息。通过仅接触一次磁盘可提高获取此信息的效率。options参数指定枚举不应列出的文件包和隐藏文件的内容。错误处理程序是返回布尔值的block块对象。如果block返回`YES`，则该在错误后继续列举， 如果返回`NO`，枚举停止。
+
+```objective-c
+NSURL *directoryURL = <#An NSURL object that contains a reference to a directory#>;
+
+NSArray *keys = [NSArray arrayWithObjects:
+                 NSURLIsDirectoryKey, NSURLIsPackageKey, NSURLLocalizedNameKey, nil];
+
+NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager]
+                                     enumeratorAtURL:directoryURL
+                                     includingPropertiesForKeys:keys
+                                     options:(NSDirectoryEnumerationSkipsPackageDescendants |
+                                              NSDirectoryEnumerationSkipsHiddenFiles)
+                                     errorHandler:^(NSURL *url, NSError *error) {
+                                         // Handle the error.
+                                         // Return YES if the enumeration should continue after the error.
+                                         return <#YES or NO#>;
+                                     }];
+
+for (NSURL *url in enumerator) {
+    // Error checking is omitted for clarity.
+    NSNumber *isDirectory = nil;
+    [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:NULL];
+    
+    if ([isDirectory boolValue]) {
+        NSString *localizedName = nil;
+        [url getResourceValue:&localizedName forKey:NSURLLocalizedNameKey error:NULL];
+        
+        NSNumber *isPackage = nil;
+        [url getResourceValue:&isPackage forKey:NSURLIsPackageKey error:NULL];
+        
+        if ([isPackage boolValue]) {
+            NSLog(@"Package at %@", localizedName);
+        }
+        else {
+            NSLog(@"Directory at %@", localizedName);
+        }
+    }
+}
+```
+
+通过使用`NSDirectoryEnumerator`声明的其他方法来确定枚举期间文件的属性(父目录和当前文件或目录)，并控制递归到子目录中。以下代码枚举了一个目录的内容，并列出了最近24小时内修改过的文件。然而，如果它遇到RTFD文件包，它会跳过对它们的递归。
+
+```objective-c
+NSString *directoryPath = <#Get a path to a directory#>;
+NSDirectoryEnumerator *directoryEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:directoryPath];
+NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:(-60 * 60 * 24)];
+for (NSString *path in directoryEnumerator) {
+    if ([[path pathExtension] isEqualToString:@"rtfd"]) {
+        // Don't enumerate this directory.
+        [directoryEnumerator skipDescendents];
+    } else {
+        NSDictionary *attributes = [directoryEnumerator fileAttributes];
+        NSDate *lastModificationDate = [attributes objectForKey:NSFileModificationDate];
+        if ([yesterday earlierDate:lastModificationDate] == yesterday) {
+            NSLog(@"%@ was modified within the last 24 hours", path);
+        }
+    }
+}
+```
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
