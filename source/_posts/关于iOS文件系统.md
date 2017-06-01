@@ -313,6 +313,49 @@ if (array == nil) {
 
 如果在三天后不删除临时文件，系统可能会删除它们，无论是否使用它们。
 
+# 管理文件和目录
+
+涉及文件和目录的一些最基本操作是创建它们并将它们移动到文件系统。这些操作是应用程序如何构建其执行任务所需的文件系统结构。对于大多数操作，`NSFileManager`类应提供创建和操作文件所需的功能。在极少数情况下，不需要直接使用BSD级别的功能。
+
+## 以编程方式创建新文件和目录
+
+创建文件和目录是文件管理的基本部分。通常，创建自定义目录来组织代码创建的文件。例如，可以在应用程序`Application Support`目录中创建一些自定义目录，以存储应用程序管理的任何私有数据文件。有很多方法来创建文件。
+
+### 创建目录
+
+当要创建自定义目录时，可以使用以下`NSFileManager`方法。一个进程可以在任何具有这样做权限的地方创建目录，它始终包括当前主目录，并且还可以包括其他文件系统位置。可以通过构建一个路径来指定要创建的目录，并将`NSURL`或`NSString`对象传递给以下方法之一：
+
+- `createDirectoryAtURL:withIntermediateDirectories:attributes:error:` 
+- `createDirectoryAtPath:withIntermediateDirectories:attributes:error:`
+
+以下代码显示了如何在`~/Library/Application Support`中为应用程序文件创建自定义目录。如果该目录不存在，则该方法将创建目录，并将目录的路径返回给调用代码。因为这种方法每次都触及文件系统，所以避免重复调用此方法来检索URL。可以调用它一次，然后缓存返回的URL。
+
+```objective-c
+- (NSURL *)applicationDirectory {
+    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *dirPath = nil;
+    
+    // Find the application support directory in the home directory.
+    NSArray *appSupportDir = [fm URLsForDirectory:NSApplicationSupportDirectory
+                                        inDomains:NSUserDomainMask];
+    if ([appSupportDir count] > 0) {
+        // Append the bundle ID to the URL for the
+        // Application Support directory
+        dirPath = [[appSupportDir objectAtIndex:0] URLByAppendingPathComponent:bundleID];
+        // If the directory does not exist, this method creates it.
+        // This method is only available in macOS 10.7 and iOS 5.0 or later.
+        NSError *theError = nil;
+        if (![fm createDirectoryAtURL:dirPath withIntermediateDirectories:YES
+                           attributes:nil error:&theError]) {
+            // Handle the error.
+            return nil;
+        }
+    }
+    return dirPath;
+}
+```
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
