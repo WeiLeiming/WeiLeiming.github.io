@@ -413,6 +413,15 @@ if (array == nil) {
 }
 ```
 
+## 删除文件和目录
+
+要删除文件和目录，使用以下`NSFileManager`类的方法：
+
+- `removeItemAtURL:error:`
+- `removeItemAtPath:error:`
+
+当使用这些方法删除文件时，需意识到是永久删除文件系统中的文件。这些方法不会将文件移动到稍后可以将其恢复的垃圾桶。
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
