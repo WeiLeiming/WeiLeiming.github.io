@@ -369,6 +369,50 @@ if (array == nil) {
 
 创建的任何文件都会继承与当前用户和进程关联的权限。当一次写入新文件的内容时，系统例程通常在将内容写入磁盘后关闭文件。如果例程返回文件描述符，则可以使用该描述符继续从文件读取和写入。
 
+## 复制移动文件和目录
+
+要复制文件系统周围的项目，`NSFileManager`类提供`copyItemAtURL:toURL:error:`和`copyItemAtPath:toPath:error:`方法。移动文件使用`moveItemAtURL:toURL:error:`或`moveItemAtPath:toPath:error:`方法。
+
+以上方法一次移动或复制单个文件或目录。移动或复制目录时，目录及其所有内容将受到影响。移动和复制操作的语义与Finder中的相同。在同一卷上移动操作不会导致创建新版本的项目。卷之间的移动操作的行为与复制操作相同。当移动或复制项目时，当前进程必须具有读取项目的权限，并将其移动或复制到新位置。
+
+移动和复制操作可能需要很长时间才能完成，并且`NSFileManager`类同步执行这些操作。因此，建议在并发调度队列中执行任何此类操作，而不是在应用程序的主线程上执行。以下代码显示了一个例子，通过异步创建虚构应用程序私有数据的备份。（为了示例的目的，私有数据位于`~/Library/Application Support/<bundleID>/Data`目录中，其中*bundleID*是应用程序的实际bundle标识符。）如果首次尝试复制目录失败，则此方法将检查是否存在先前的备份并将其删除。然后继续尝试，如果第二次失败，则中止。
+
+```objective-c
+- (void)backupMyApplicationData {
+    // Get the application's main data directory
+    NSArray *theDirs = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory
+                                                              inDomains:NSUserDomainMask];
+    if ([theDirs count] > 0) {
+        // Build a path to ~/Library/Application Support/<bundle_ID>/Data
+        // where <bundleID> is the actual bundle ID of the application.
+        NSURL *appSupportDir = (NSURL *)[theDirs objectAtIndex:0];
+        NSString *appBundleID = [[NSBundle mainBundle] bundleIdentifier];
+        NSURL *appDataDir = [[appSupportDir URLByAppendingPathComponent:appBundleID]
+                             URLByAppendingPathComponent:@"Data"];
+        // Copy the data to ~/Library/Application Support/<bundle_ID>/Data.backup
+        NSURL *backupDir = [appDataDir URLByAppendingPathExtension:@"backup"];
+        // Perform the copy asynchronously.
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // It's good habit to alloc/init the file manager for move/copy operations,
+            // just in case you decide to add a delegate later.
+            NSFileManager *theFM = [[NSFileManager alloc] init];
+            NSError *anError;
+            // Just try to copy the directory.
+            if (![theFM copyItemAtURL:appDataDir toURL:backupDir error:&anError]) {
+                // If an error occurs, it's probably because a previous backup directory
+                // already exists.  Delete the old directory and try again.
+                if ([theFM removeItemAtURL:backupDir error:&anError]) {
+                    // If the operation failed again, abort for real.
+                    if (![theFM copyItemAtURL:appDataDir toURL:backupDir error:&anError]) {
+                        // Report the error....
+                    }
+                }
+            }
+        });
+    }
+}
+```
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
