@@ -356,6 +356,19 @@ if (array == nil) {
 }
 ```
 
+### 创建新文件
+
+创建文件有两个部分：为文件系统中的文件创建一个记录，并用内容填充该文件。用于创建文件的所有高级接口同时执行两个任务，通常用`NSData`或`NSString`对象的内容填充文件，然后关闭该文件。还可以使用较低级别的函数来创建一个空文件，并获得一个文件描述符，然后可以使用该文件描述符来填充数据。可以用来创建文件的一些例程有：
+
+- `createFileAtPath:contents:attributes:`（`NSFileManager`）
+- `writeToURL:atomically:`（`NSData`）
+- `writeToURL:atomically:`（`NSString`）
+- `writeToURL:atomically:encoding:error:`（`NSString`）
+- `writeToURL:atomically:` （各种集合类定义了用于编写属性列表的方法。）
+- `open`功能与`O_CREAT`选项创建一个新的空文件
+
+创建的任何文件都会继承与当前用户和进程关联的权限。当一次写入新文件的内容时，系统例程通常在将内容写入磁盘后关闭文件。如果例程返回文件描述符，则可以使用该描述符继续从文件读取和写入。
+
 # 参考资料
 
 [File System Programming Guide](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672)
