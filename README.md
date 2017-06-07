@@ -1,6 +1,8 @@
 # 博客
 
-[![Travis branch](https://img.shields.io/travis/WeiLeiming/weileiming.github.io/source.svg)](https://travis-ci.org/WeiLeiming/weileiming.github.io)
+[![Travis branch](https://img.shields.io/travis/WeiLeiming/weileiming.github.io/source.svg?style=flat)](https://travis-ci.org/WeiLeiming/weileiming.github.io)
+
+![Language](https://img.shields.io/badge/Language-Swift-blue.svg)
 
 个人博客
 
