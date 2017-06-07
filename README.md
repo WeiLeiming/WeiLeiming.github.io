@@ -1,10 +1,6 @@
 # 博客
 
-[![Build Status](https://travis-ci.org/WeiLeiming/weileiming.github.io.svg?branch=source)](https://travis-ci.org/WeiLeiming/weileiming.github.io)
-
 [![Travis branch](https://img.shields.io/travis/WeiLeiming/weileiming.github.io/source.svg)](https://travis-ci.org/WeiLeiming/weileiming.github.io)
-
-[![Version](https://img.shields.io/cocoapods/v/CRRefresh.svg?style=flat)](http://cocoapods.org/pods/CRRefresh)
 
 个人博客
 
