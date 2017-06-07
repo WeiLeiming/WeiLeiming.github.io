@@ -15,7 +15,7 @@
 
 ## 自动部署
 
-使用自动部署后，主题使用`Next`的[Release](https://github.com/iissnan/hexo-theme-next/releases)版本，不再从作者的仓库拉取，不然会出错，将主题所有原文件上传至自己的仓库
+加入自动部署后，我将博客主题由`yilia`改为了`Next`。[下载](https://github.com/iissnan/hexo-theme-next/releases)主题并将主题所有原文件上传至自己的仓库，不从作者的仓库拉取，不然会丢失配置。
 
 ### 参考资料
 
