@@ -1,5 +1,11 @@
 # 博客
 
+[![Build Status](https://travis-ci.org/WeiLeiming/weileiming.github.io.svg?branch=master)](https://travis-ci.org/WeiLeiming/weileiming.github.io)
+
+个人博客
+
+## 分支
+
 - `master` 分支: 博客静态网页
 - `source` 分支: 博客源文件
 
