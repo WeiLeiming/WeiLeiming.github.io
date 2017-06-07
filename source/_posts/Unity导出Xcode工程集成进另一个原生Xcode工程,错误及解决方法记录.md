@@ -7,6 +7,8 @@ tags:
 typora-copy-images-to: ipic
 ---
 
+最后更新时间：2017.6.7
+
 最近在研究Unity导出的Xcode工程如何集成在现有工程中。现将过程中遇见的问题整理如下。
 
 <!-- more -->
@@ -242,11 +244,19 @@ inline UnityAppController*	GetAppController()
 
 1. 编译完成出现许多`Code will never be executed`的警告⚠️
 
-![111](https://ww2.sinaimg.cn/large/006tNc79ly1fdd7hrn1pjj304x010mx1.jpg)
+   ![111](https://ww2.sinaimg.cn/large/006tNc79ly1fdd7hrn1pjj304x010mx1.jpg)
 
-​	解决方法：在`Build Settings`中将`Unreachable Code`设置为**No**可以消除警告
+   解决方法：在`Build Settings`中将`Unreachable Code`设置为**No**可以消除警告
 
-![222](https://ww3.sinaimg.cn/large/006tNbRwly1fdd7jiejdqj30c700n3yd.jpg)
+   ![222](https://ww3.sinaimg.cn/large/006tNbRwly1fdd7jiejdqj30c700n3yd.jpg)
+
+2. 编译出现`Expected unqualified-id`错误
+
+   ![9D5AA7E6-1800-4904-9E7A-E268547875CB](https://ws3.sinaimg.cn/large/006tNbRwly1fgcn2dowhnj30700j241h.jpg)
+
+   解决方法：在PrefixHeader.pch文件中，将自己的头文件全部放入#ifdef中，如下：
+
+   ![177BB71A-B8E2-4DC9-B155-2EADFF2C9E2D](https://ws3.sinaimg.cn/large/006tNbRwly1fgcn0lhrdtj3086060wf1.jpg)
 
 # 参考资料
 
