@@ -62,77 +62,77 @@ typora-copy-images-to: ipic
 
 - 将文件添加进工程目录
 
-将Classes、Libraries、MapFileParser.sh添加进工程目录
+  将Classes、Libraries、MapFileParser.sh添加进工程目录
 
 ![333](https://ww2.sinaimg.cn/large/006tNc79ly1fdgogg7fsij30l80cw752.jpg)
 
-将Data添加进工程目录
+​	将Data添加进工程目录
 
 ![444](https://ww4.sinaimg.cn/large/006tNc79ly1fdgoft719rj30l80cwaau.jpg)
 
-注意这两种不同的添加形式
+​	注意这两种不同的添加形式
 
 - 添加framework
 
-根据自己导出的Unity_Xcode工程添加
+  根据自己导出的Unity_Xcode工程添加
 
 ![555](https://ww3.sinaimg.cn/large/006tNc79ly1fdgoxk1oncj30nj0daabs.jpg)
 
 - Build Settings
 
-设置Header Search Paths
+  设置Header Search Paths
 
 ![111](https://ww3.sinaimg.cn/large/006tNc79ly1fdgp5v2yb8j30jj0660th.jpg)
 
-设置Library Search Paths
+​	设置Library Search Paths
 
 ![444](https://ww1.sinaimg.cn/large/006tNc79ly1fdgphvrzdij30jj067mxq.jpg)
 
-设置Other Linker Flags
+​	设置Other Linker Flags
 
 ![333](https://ww3.sinaimg.cn/large/006tNc79ly1fdgplwi962j30j30670t2.jpg)
 
-设置Other C Flags & Other C++ Flags
+​	设置Other C Flags & Other C++ Flags
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgpqzi4a9j30jj067dg5.jpg)
 
-设置C Language Dialect
+​	设置C Language Dialect
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgpsr63j4j30eq00ldfq.jpg)
 
-设置C++ Language Dialect
+​	设置C++ Language Dialect
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgptuhwqkj30e700ngli.jpg)
 
-设置C++ Standard Library
+​	设置C++ Standard Library
 
 ![222](https://ww1.sinaimg.cn/large/006tNc79ly1fdgpuvg8h4j30j000pmx5.jpg)
 
-设置Enable Bitcode
+​	设置Enable Bitcode
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgpvqt66yj30c200m0sl.jpg)
 
-Add User-Defined Setting
+​	Add User-Defined Setting
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgpypkbzrj30fy01vglq.jpg)
 
-添加GCC_THUMB_SUPPORT
+​	添加GCC_THUMB_SUPPORT
 
-添加GCC_USE_INDIRECT_FUNCTION_CALLS
+​	添加GCC_USE_INDIRECT_FUNCTION_CALLS
 
-添加UNITY_RUNTIME_VERSION。此项根据Unity导出的版本填写。
+​	添加UNITY_RUNTIME_VERSION。此项根据Unity导出的版本填写。
 
-添加UNITY_SCRIPTING_BACKEND
+​	添加UNITY_SCRIPTING_BACKEND
 
 ![222](https://ww3.sinaimg.cn/large/006tNc79ly1fdgq23tobej30fs03m74n.jpg)
 
 - Build Phases
 
-添加Run Script
+  添加Run Script
 
 ![222](https://ww2.sinaimg.cn/large/006tNc79ly1fdgq4o44sjj30mg05k0ta.jpg)
 
-添加"$PROJECT_DIR/iOS_Unity_Test01/Unity/MapFileParser.sh"
+​	添加"$PROJECT_DIR/iOS_Unity_Test01/Unity/MapFileParser.sh"
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgq7dgx89j30st098js0.jpg)
 
@@ -244,7 +244,7 @@ inline UnityAppController*	GetAppController()
 
 ![111](https://ww2.sinaimg.cn/large/006tNc79ly1fdd7hrn1pjj304x010mx1.jpg)
 
-解决方法：在`Build Settings`中将`Unreachable Code`设置为**No**可以消除警告
+​	解决方法：在`Build Settings`中将`Unreachable Code`设置为**No**可以消除警告
 
 ![222](https://ww3.sinaimg.cn/large/006tNbRwly1fdd7jiejdqj30c700n3yd.jpg)
 
