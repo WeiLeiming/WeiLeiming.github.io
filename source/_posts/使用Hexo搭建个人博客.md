@@ -1,6 +1,7 @@
 ---
 title: 使用Hexo搭建个人博客
 date: 2017-03-09 11:05:28
+categories: 奇淫巧技
 tags:
 	- 奇淫巧技
 	- Hexo

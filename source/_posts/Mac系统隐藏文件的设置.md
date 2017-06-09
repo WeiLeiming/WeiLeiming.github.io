@@ -1,6 +1,7 @@
 ---
 title: Mac系统隐藏文件的设置
 date: 2017-02-24 10:28:50
+categories: 奇淫巧技
 tags:
 	- Mac
 	- 奇淫巧技

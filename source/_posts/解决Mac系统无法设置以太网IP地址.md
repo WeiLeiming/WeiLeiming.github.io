@@ -1,6 +1,7 @@
 ---
 title: 解决Mac系统无法设置以太网IP地址
 date: 2017-05-27 14:40:08
+categories: 奇淫巧技
 tags:
 	- Mac
 	- 奇淫巧技

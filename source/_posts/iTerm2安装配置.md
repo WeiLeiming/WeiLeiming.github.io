@@ -1,6 +1,7 @@
 ---
 title: iTerm2安装配置
 date: 2017-03-21 17:07:32
+categories: 奇淫巧技
 tags:
 	- 奇淫巧技
 typora-copy-images-to: ipic
