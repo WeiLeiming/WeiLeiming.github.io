@@ -50,19 +50,19 @@ Return
 ```swift
 class Solution {
     func generate(_ numRows: Int) -> [[Int]] {
-        var totalArray: [Array<Int>] = []
+        var result: [Array<Int>] = []
         
         for i in 0..<numRows {
             let subArray = Array.init(repeating: 1, count: i+1)
-            totalArray.append(subArray)
+            result.append(subArray)
 
             if i > 1 {
                 for j in 1..<i {
-                    totalArray[i][j] = totalArray[i - 1][j - 1] + totalArray[i - 1][j]
+                    result[i][j] = result[i - 1][j - 1] + result[i - 1][j]
                 }
             }
         }
-        return totalArray
+        return result
     }
 }
 ```
