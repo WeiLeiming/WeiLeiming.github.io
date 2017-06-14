@@ -183,7 +183,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.0.6, bluebird@^3.2.2, bluebird@^3.4.0:
+bluebird@^3.0.6, bluebird@^3.2.2, bluebird@^3.4.0, bluebird@^3.5.0:
   version "3.5.0"
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
@@ -493,13 +493,6 @@ dtrace-provider@~0.8:
   dependencies:
     nan "^2.3.3"
 
-each-async@^1.1.1:
-  version "1.1.1"
-  resolved "http://registry.npm.taobao.org/each-async/download/each-async-1.1.1.tgz#dee5229bdf0ab6ba2012a395e1b869abf8813473"
-  dependencies:
-    onetime "^1.0.0"
-    set-immediate-shim "^1.0.0"
-
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/ecc-jsbn/download/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -513,6 +506,10 @@ ee-first@1.1.1:
 ejs@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/ejs/download/ejs-1.0.0.tgz#c9c60a48a46ee452fb32a71c317b95e5aa1fcb3d"
+
+ejs@^2.3.4:
+  version "2.5.6"
+  resolved "http://registry.npm.taobao.org/ejs/download/ejs-2.5.6.tgz#479636bfa3fe3b1debd52087f0acb204b4f19c88"
 
 encodeurl@~1.0.1:
   version "1.0.1"
@@ -792,13 +789,12 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-hexo-algolia@^0.1.1:
-  version "0.1.1"
-  resolved "http://registry.npm.taobao.org/hexo-algolia/download/hexo-algolia-0.1.1.tgz#667e540fb2a312488a83ec65258a34274f0e1a64"
+hexo-algolia@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/hexo-algolia/download/hexo-algolia-1.1.0.tgz#99387e5ce0ca24f3c028b8cbae0a13c48aeca701"
   dependencies:
     algoliasearch "^3.4.0"
-    each-async "^1.1.1"
-    lodash "^4.0.0"
+    lodash "^4.17.4"
 
 hexo-cli@^1.0.2:
   version "1.0.3"
@@ -815,14 +811,15 @@ hexo-cli@^1.0.2:
     object-assign "^4.1.0"
     tildify "^1.2.0"
 
-hexo-deployer-git@^0.2.0:
-  version "0.2.0"
-  resolved "http://registry.npm.taobao.org/hexo-deployer-git/download/hexo-deployer-git-0.2.0.tgz#f0138a58ab35361f4c55906bb37a7a739d512fb0"
+hexo-deployer-git@^0.3.0:
+  version "0.3.0"
+  resolved "http://registry.npm.taobao.org/hexo-deployer-git/download/hexo-deployer-git-0.3.0.tgz#ae14f98d5568b19c9b45fd4d32338ac708951dca"
   dependencies:
+    bluebird "^3.5.0"
     chalk "^1.1.3"
-    hexo-fs "^0.1.5"
+    hexo-fs "^0.1.6"
     hexo-util "^0.6.0"
-    moment "^2.13.0"
+    moment "^2.18.0"
     swig "^1.4.2"
 
 hexo-front-matter@^0.2.2:
@@ -831,7 +828,7 @@ hexo-front-matter@^0.2.2:
   dependencies:
     js-yaml "^3.6.1"
 
-hexo-fs@^0.1.5:
+hexo-fs@^0.1.5, hexo-fs@^0.1.6:
   version "0.1.6"
   resolved "http://registry.npm.taobao.org/hexo-fs/download/hexo-fs-0.1.6.tgz#f980ccc3bc79d0fb92eddbd887bc20a56500d03f"
   dependencies:
@@ -927,16 +924,16 @@ hexo-pagination@0.0.2:
   dependencies:
     utils-merge "^1.0.0"
 
-hexo-renderer-ejs@^0.2.0:
-  version "0.2.0"
-  resolved "http://registry.npm.taobao.org/hexo-renderer-ejs/download/hexo-renderer-ejs-0.2.0.tgz#80771935a5cc71513f07c2c7c14f006220817ae0"
+hexo-renderer-ejs@^0.3.0:
+  version "0.3.0"
+  resolved "http://registry.npm.taobao.org/hexo-renderer-ejs/download/hexo-renderer-ejs-0.3.0.tgz#ec12969b56907be4fbf0f859bdd4e4aefd2024c0"
   dependencies:
-    ejs "^1.0.0"
+    ejs "^2.3.4"
     object-assign "^4.0.1"
 
-hexo-renderer-marked@^0.2.10:
-  version "0.2.11"
-  resolved "http://registry.npm.taobao.org/hexo-renderer-marked/download/hexo-renderer-marked-0.2.11.tgz#32fd3880d3c3979fd7b8015ec121a6c44ff49f84"
+hexo-renderer-marked@^0.3.0:
+  version "0.3.0"
+  resolved "http://registry.npm.taobao.org/hexo-renderer-marked/download/hexo-renderer-marked-0.3.0.tgz#5fa27a361075d148b8ecff29952a3e15e23aed81"
   dependencies:
     hexo-util "^0.6.0"
     marked "^0.3.5"
@@ -1259,7 +1256,7 @@ load-script@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/load-script/download/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
 
-lodash@^4.0.0, lodash@^4.1.0, lodash@^4.13.1, lodash@^4.2.1:
+lodash@^4.1.0, lodash@^4.13.1, lodash@^4.17.4, lodash@^4.2.1:
   version "4.17.4"
   resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -1360,13 +1357,13 @@ moment-timezone@^0.5.4:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.10.6, moment@^2.13.0:
-  version "2.18.1"
-  resolved "http://registry.npm.taobao.org/moment/download/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
-
-moment@~2.13.0:
+"moment@>= 2.9.0", moment@^2.10.6, moment@~2.13.0:
   version "2.13.0"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.13.0.tgz#24162d99521e6d40f99ae6939e806d2139eaac52"
+
+moment@^2.18.0:
+  version "2.18.1"
+  resolved "http://registry.npm.taobao.org/moment/download/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
 morgan@^1.6.1:
   version "1.8.2"
@@ -1524,10 +1521,6 @@ once@^1.3.0, once@^1.3.3:
   resolved "http://registry.npm.taobao.org/once/download/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   dependencies:
     wrappy "1"
-
-onetime@^1.0.0:
-  version "1.1.0"
-  resolved "http://registry.npm.taobao.org/onetime/download/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
 
 opn@^4.0.0:
   version "4.0.2"
@@ -1815,7 +1808,7 @@ set-blocking@~2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/set-blocking/download/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
 
-set-immediate-shim@^1.0.0, set-immediate-shim@^1.0.1:
+set-immediate-shim@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/set-immediate-shim/download/set-immediate-shim-1.0.1.tgz#4b2b1b27eb808a9f8dcc481a58e5e56f599f3f61"
 
