@@ -24,6 +24,8 @@ Return `[1,3,3,1]`.
 
 Could you optimize your algorithm to use only *O*(*k*) extra space?
 
+<!-- more -->
+
 ```swift
 [
      [1],
@@ -33,8 +35,6 @@ Could you optimize your algorithm to use only *O*(*k*) extra space?
  [1,4,6,4,1]
 ]
 ```
-
-<!-- more -->
 
 ## 解题思路
 
