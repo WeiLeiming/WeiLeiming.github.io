@@ -32,7 +32,7 @@ A solution set is:
 
 ## 解题思路
 
-[1.Two Sum](http://willwei.me/2017/06/26/LeetCode--Two%20Sum/#more)的衍生题，难度相对也就高了些。先看看题目要求：
+[1.Two Sum](http://willwei.me/2017/06/26/LeetCode--Two%20Sum/)的衍生题，难度相对也就高了些。先看看题目要求：
 
 - 返回的数组是排过序的
 - 没有重复的答案数组
