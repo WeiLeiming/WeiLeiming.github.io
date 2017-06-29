@@ -26,7 +26,7 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
 ## 解题思路
 
-紧接上一题[3Sum](http://willwei.me/2017/06/28/LeetCode--3Sum/)，难度相当，解法类似，去掉去重，增加变量来计算判断查找的值和给定的值的差值就行，就不在赘言了。
+紧接上一题[15. 3Sum](http://willwei.me/2017/06/28/LeetCode--3Sum/)，难度相当，解法类似，去掉去重，增加变量来计算判断查找的值和给定的值的差值就行，就不在赘言了。
 
 ## 代码
 
