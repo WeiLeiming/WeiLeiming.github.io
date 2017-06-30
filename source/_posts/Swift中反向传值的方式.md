@@ -7,6 +7,8 @@ tags:
 	- Swift
 ---
 
+最后更新时间：2017.6.30
+
 在Swift中的反向传值方式有几种，如代理、通知、KVO、闭包(closure)等等。这里只要说说代理和闭包，Swift中的代理和闭包与Objective-C中代理和block反向传值的方式类似。
 
 这里只是简单的步骤示例，做个记录，并未深究。
@@ -52,7 +54,7 @@ tags:
 
 代理可能有点绕，熟悉后就很简单。举个例子，`B`要传值给`A`，那么`B`就拥有代理属性，`A`就是`B`的代理。
 
-1. 在`B`中声明协议
+1. 在`B`中声明协议，最新已不需要继承`NSObjectProtocol`
 
    ```swift
    protocol CellDelegate: NSObjectProtocol {
@@ -60,7 +62,7 @@ tags:
    }
    ```
 
-2. 在`B`中定义代理属性
+2. 在`B`中定义代理属性，最新已不需要`weak`
 
    ```swift
    weak var delegate: CellDelegate?
@@ -86,3 +88,5 @@ tags:
 # 参考资料
 
 [Closures](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94)
+
+[Protocols](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267)
