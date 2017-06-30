@@ -24,16 +24,16 @@ func sizeofValue<T>(_: T) -> Int
 ```c
 // C
 char bytes[] = {1, 2, 3};
-sizeof(bytes);	// 3
+sizeof(bytes);          // 3
 
 int bytes[] = {1, 2, 3};
-sizeof(bytes);	// 12
+sizeof(bytes);          // 12
 ```
 
 ```swift
 // Swift
 let bytes = [1, 2, 3]
-sizeofValue(bytes)	// 8: 64位系统一个引用的长度
+sizeofValue(bytes)      // 8: 64位系统一个引用的长度
 ```
 
 # MemoryLayout
@@ -44,8 +44,8 @@ sizeofValue(bytes)	// 8: 64位系统一个引用的长度
 
 ```swift
 let a = 10
-MemoryLayout<Int>.size				// 8
-MemoryLayout.size(ofValue: a)		// 8
+MemoryLayout<Int>.size              // 8
+MemoryLayout.size(ofValue: a)       // 8
 ```
 
 ## 属性方法介绍
