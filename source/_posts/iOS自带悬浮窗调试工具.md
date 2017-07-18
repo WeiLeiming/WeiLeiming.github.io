@@ -45,4 +45,4 @@ _ = overlayClass?.perform(NSSelectorFromString("prepareDebuggingOverlay"))
 - VC Hierarchy: 查看ViewController的层次关系和相关属性
 - Ivar Explorer: 查看UIApplication的成员属性
 - Measure: 测量组件大小
-- Spec Compare: 设计图对比
+- Spec Compare: 设计图对比。需在`Info.plist`中添加`NSPhotoLibraryUsageDescription`权限
