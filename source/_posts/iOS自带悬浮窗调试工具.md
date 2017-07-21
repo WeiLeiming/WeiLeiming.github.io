@@ -1,6 +1,7 @@
 ---
 title: iOS自带悬浮窗调试工具
 date: 2017-07-13 16:42:27
+categories: iOS
 tags:
 	- iOS
 typora-copy-images-to: ipic
