@@ -6,6 +6,8 @@ tags:
 	- iOS
 ---
 
+最后更新时间：2017.7.21
+
 # 背景
 
 最近的一个小项目，打包出来的ipa包高达90.8MB，这是我始料未及的，于是动了心思为它瘦身。
@@ -33,9 +35,13 @@ tags:
 
 - 图片资源压缩。
   - 工具：[TinyPng](https://tinypng.com/)或[ImageOptim](https://github.com/ImageOptim/ImageOptim)
-- 音视频压缩。没做过。
+- 音视频压缩。
 
 资源压缩是一定要做的，可以缩小很多体积。
+
+### 下载
+
+将这些资源移到Web服务，App可以从Web服务中下载所需资源。
 
 ### 其他
 
@@ -58,6 +64,8 @@ tags:
 待研究
 
 # 参考资料
+
+[Reducing the size of my App](https://developer.apple.com/library/content/qa/qa1795/_index.html)
 
 [Build Setting Reference](https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html)
 
