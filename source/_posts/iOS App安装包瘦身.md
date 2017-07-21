@@ -65,7 +65,11 @@ tags:
 
 # 参考资料
 
+[App Thinning](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html)
+
 [Reducing the size of my App](https://developer.apple.com/library/content/qa/qa1795/_index.html)
+
+[On-Demand Resources Essentials](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/)
 
 [Build Setting Reference](https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html)
 
