@@ -28,7 +28,7 @@ tags:
    $ vim ~/.bash_profile
    ```
 
-5. 使用vim编辑，在最后添加 `PATH=$PATH:/usr/local/mysql/bin` ,保存退出
+5. 使用vim编辑，在最后添加 `export PATH="$PATH:/usr/local/mysql/bin"` ，保存退出
 
 6. 输入命令，立即生效
 
