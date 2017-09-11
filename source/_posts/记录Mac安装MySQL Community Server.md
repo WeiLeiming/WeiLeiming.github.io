@@ -6,6 +6,8 @@ tags:
 	- MySQL
 ---
 
+最后更新时间：2017.9.11
+
 # 安装
 
 1. 下载 [MySQL Community Server](https://dev.mysql.com/downloads/mysql/) DMG安装包
@@ -22,18 +24,46 @@ tags:
 
 3. 点击 `Start MySQL Server` 开启MySQL服务
 
-4. 打开命令行，这个时候命令行输入 `mysql` 会提示找不到命令。配置系统环境变量，命令行输入命令
+4. 打开命令行，这个时候命令行输入 `mysql` 会提示找不到命令。配置系统环境变量，命令行输入命令：
+
+   使用bash，编辑`~/.bash_profile`
 
    ```
    $ vim ~/.bash_profile
    ```
 
-5. 使用vim编辑，在最后添加 `export PATH="$PATH:/usr/local/mysql/bin"` ，保存退出
+   使用zsh，则编辑`~/.zshrc`
+
+   ```
+   $ vim ~/.zshrc
+   ```
+
+5. 使用vim编辑，添加：
+
+   ~/.bash_profile
+
+   ```
+   export PATH="$PATH:/usr/local/mysql/bin"
+   ```
+
+   ~/.zshrc
+
+   ```
+   export PATH=$HOME/mysql/bin:/usr/local/mysql/bin:$PATH
+   ```
 
 6. 输入命令，立即生效
 
+   bash
+
    ```
    $ source ~/.bash_profile
+   ```
+
+   zsh
+
+   ```
+   $ source ~/.zshrc
    ```
 
 7. 输入命令，登录MySQL
