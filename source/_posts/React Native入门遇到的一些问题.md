@@ -51,7 +51,7 @@ npm ERR!     /Users/willwei/ReactNative/npm-debug.log
 
 解决方法：
 
-```sh
+```shell
 $ sudo npm install -g react-native-cli
 ```
 
