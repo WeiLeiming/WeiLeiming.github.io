@@ -1,6 +1,7 @@
 ---
 title: Mac命令行代理配置
 date: 2017-09-11 11:34:34
+categories: 奇淫巧技
 tags:
 	- Mac
 	- 奇淫巧技

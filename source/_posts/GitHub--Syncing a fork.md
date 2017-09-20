@@ -3,7 +3,6 @@ title: GitHub--Syncing a fork
 date: 2017-09-11 10:35:00
 tags:
 	- GitHub
-	- 奇淫巧技
 ---
 
 1. `git remote -v` — 查看所有远程主机及地址
