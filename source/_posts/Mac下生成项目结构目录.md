@@ -25,6 +25,8 @@ $ man tree
 $ tree -L 4 > directory.txt
 ```
 
+<!-- more -->
+
 `-L 4`表示向下遍历目录最大级数。
 
 然后将目录结构输出到`directory.txt`中。
