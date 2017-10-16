@@ -6,6 +6,8 @@ tags:
 	- 面试
 ---
 
+最后更新时间：2017.10.16
+
 自己面试遇到或收集的一些面试题，在这里记录回答
 
 <!-- more -->
@@ -26,7 +28,15 @@ tags:
 
 ### 父类实现深拷贝时，子类如何实现深度拷贝。父类没有实现深拷贝时，子类如何实现深度拷贝。
 
-占位
+若想实现拷贝，则需遵从`NSCopying`协议（可变的是`NSMutableCopying`协议），实现该协议的方法
+
+```objective-c
+- (id)copyWithZone:(NSZone *)zone;
+```
+
+如果父类已实现深拷贝，子类只需重写`- (id)copyWithZone:(NSZone *)zone`，调用父类的`copyWithZone`，并对子类自己的属性进行处理即可。
+
+父类如果没有实现深拷贝，那么不仅需要对子类的属性进行处理，还需要对父类的属性进行处理。
 
 ### KVO，NSNotification，delegate及block区别
 
