@@ -6,7 +6,7 @@ tags:
 	- 面试
 ---
 
-最后更新时间：2017.10.16
+最后更新时间：2017.10.17
 
 自己面试遇到或收集的一些面试题，在这里记录回答
 
@@ -40,11 +40,43 @@ tags:
 
 ### KVO，NSNotification，delegate及block区别
 
-占位
+KVO:键值观察，一对多，可以监听对象属性变化，只监听数据变化的时候常用
+
+NSNotifiction:通知，一对多，相比于KVO多了一步发送通知的操作，但不局限于KVO只能监听属性，使用更加灵活
+
+delegate:代理，一对一，比如两个类之间的传值，类A调用类B的方法，类B在执行过程中遇到问题通知类A，这时候我们可以用到代理
+
+block:代码块，使用场景与delegate一致，能够直接访问上下文，使用block的地方和block的实现在同一个地方，比使用delegate时代码组织更连贯，更直观。回调比较多时使用delegate
 
 ### KVC如何实现，如何进行键值查找。KVO如何实现
 
-占位
+- 调用`setValue:forKey:`：
+
+  1. 检查有没有跟key相同名称的set方法，如果有，就会调用set方法
+
+  2. 如果set方法不存在，类方法`accessInstanceVariablesDirectly`（是否直接访问没有生成访问器的变量）返回`YES`（这是`NSKeyValueCodingCatogery`中实现的类方法，默认实现为返回`YES`），那么按\_**key**，\_is**Key**，**key**，is**Key**的顺序查找成员属性，如果有，则直接给成员属性赋值
+
+  3. 如果还没找到，则调用`setValue:forUndefinedKey:`方法（默认实现是抛出异常，根据需要重写）
+
+- 调用`valueForKey:`：
+
+  1. 按get**Key**，**key**，is**Key**的顺序查找getter方法，如果有，直接调用。如果是bool、int等内建值类型，会做NSNumber的转换
+  2. 如果没有找到getter，查找countOf**Key**、objectIn**Key**AtIndex:、**key**AtIndexes格式的方法。如果countOf**Key**和另外两个方法中的一个找到，那么就会返回一个可以响应NSArray所有方法的代理集合(collection proxy object)。发送给这个代理集合(collection proxy object)的NSArray消息方法，就会以countOf**Key**、objectIn**Key**AtIndex:、**key**AtIndexes这几个方法组合的形式调用。还有一个可选的get**key**:range:方法
+  3. 还没查到的话，那么查找countOf**Key**、enumeratorOf**Key**、memberOf**Key**:格式的方法。如果这三个方法都找到，那么就返回一个可以响应NSSet所有方法的代理集合(collection proxy object)。发送给这个代理集合(collection proxy object)的NSSet消息方法，就会以countOf**Key**、enumeratorOf**Key**、memberOf**Key**:组合的形式调用
+  4. 还是没查到，那么如果类方法`accessInstanceVariablesDirectly`返回`YES`，那么按\_**key**，\_is**Key**，**key**，is**Key**的顺序直接搜索成员名
+  5. 再没查到，调用`valueForUndefinedKey:`
+
+  这有一篇KVC的文章，[前往](http://blog.csdn.net/u010123208/article/details/40425147)
+
+- KVC实现原理：
+
+  KVC运用了一个isa-swizzling技术。isa-swizzling就是类型混合指针机制。KVC主要通过isa-swizzling，来实现其内部查找定位的。isa指针，如其名称所指，（就是is a kind of的意思），指向维护分发表的对象的类。该分发表实际上包含了指向实现类中的方法的指针，和其它数据
+
+- KVO实现原理：
+
+  当某个类的对象第一次被观察时，系统就会在运行期动态地创建该类的一个派生类，在这个派生类中重写基类中任何被观察属性的 setter 方法。派生类在被重写的 setter 方法实现真正的通知机制。这么做是基于设置属性会调用 setter 方法，而通过重写就获得了 KVO 需要的通知机制。当然前提是要通过遵循 KVO 的属性设置方式来变更属性值，如果仅是直接修改属性对应的成员变量，是无法实现 KVO 的。同时派生类还重写了 class 方法以“欺骗”外部调用者它就是起初的那个类。然后系统将这个对象的 isa 指针指向这个新诞生的派生类，因此这个对象就成为该派生类的对象了，因而在该对象上对 setter 的调用就会调用重写的 setter，从而激活键值通知机制。此外，派生类还重写了 dealloc 方法来释放资源
+
+  这有一篇KVO的文章，[前往](http://www.jianshu.com/p/e59bb8f59302)
 
 ### 将一个函数在主线程执行的4种方法
 
