@@ -80,11 +80,47 @@ block:代码块，使用场景与delegate一致，能够直接访问上下文，
 
 ### 将一个函数在主线程执行的4种方法
 
-占位
+- GCD
+
+  ```objective-c
+  dispatch_async(dispatch_get_main_queue(), ^{
+  	<#code#>
+  });
+  ```
+
+- NSOperation
+
+  ```objective-c
+  NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
+  NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+      <#code#>
+  }];
+  [mainQueue addOperation:operation];
+  ```
+
+- NSthread
+
+  ```objective-c
+  [[NSThread mainThread] performSelector:@selector(<#selector#>) withObject:nil];
+  ```
+
+- RunLoop
+
+  ```objective-c
+  [[NSRunLoop mainRunLoop] performSelector:@selector(<#selector#>) withObject:nil];
+  ```
 
 ### 如何让计时器调用一个类方法
 
-占位
+```objective-c
+[NSTimer scheduledTimerWithTimeInterval:1.0 repeats:NO block:^(NSTimer * _Nonnull timer) {
+	[[self class] classMethod];
+}];
+
++ (void)classMethod {
+    NSLog(@"classMethod");
+}
+```
 
 ### 如何重写类方法
 
