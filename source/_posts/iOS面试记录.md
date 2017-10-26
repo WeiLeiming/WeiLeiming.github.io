@@ -124,16 +124,39 @@ block:代码块，使用场景与delegate一致，能够直接访问上下文，
 
 ### 如何重写类方法
 
-占位
+在子类中实现一个和父类一样的类方法即可
 
 ### NSTimer创建后，会在哪个线程运行
 
-占位
+- 使用`scheduledTimerWithTimeInterval:`创建的timer，在哪个线程创建就会加入哪个线程的RunLoop中运行
+- 使用`timerWithTimeInterval:`和`initWithFireDate:`创建的timer，添加到哪个线程的RunLoop就会运行在哪个线程
 
 ### id和NSObject *的区别
 
-占位
+- `id`是一个`objc_object`结构体指针，是一种通用的对象类型，可以指向所有的`OC`对象而不仅限于`NSObject`，并且编译器不会做类型检查
+
+  ```objective-c
+  typedef struct objc_object *id;
+  struct objc_object {
+      Class _Nonnull isa  OBJC_ISA_AVAILABILITY;
+  };
+  ```
+
+
+- `NSObject *`是`NSObject`类型的指针，只能指向`NSObject`及其子类，调用的也只能是`NSObject`里面的方法否则就要做强制类型转换
+- 在OC中，不是所有的类都是继承于`NSObject`，所以`id`的范围比`NSObject *`广
 
 ### 编写一个冒泡排序
 
-占位
+```c
+for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+            temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+```
+
