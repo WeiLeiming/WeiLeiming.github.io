@@ -160,3 +160,39 @@ for (int i = 0; i < n - 1; i++) {
 }
 ```
 
+### 什么是ARC?（ARC是为了解决什么问题诞生的？）
+
+### 请解释以下 Keywords 的区别：assign vs weak, \_\_block vs \_\_weak
+
+### \_\_block 在 ARC 和 非 ARC 下含义一样吗？
+
+### 使用 atomic 一定是线程安全的吗？
+
+### 描述一个你遇到过的 retain cycle 例子
+
+### +(void)load; +(void)initialize; 有什么用处？
+
+### 为什么其他语言里叫函数调用，Objective-C 里则是给对象发消息（或者谈下对runtime的理解）
+
+### 什么是 method swizzling？
+
+### UIView 和 CALayer 是啥关系？
+
+### 如何高性能的给 UIImageView 加个圆角？（不准说 layer.cornerRadius ）
+
+### 使用 drawRect 有什么影响？
+
+### ASIHttpRequest 或者 SDWebImage 里面给UIImageView 加载图片的逻辑是什么样的？（把 UIImageView 放到 UITableViewCell 里面问更赞）
+
+### 麻烦你设计个简单的图片内存缓存器（移除策略是一定要说的）
+
+### 讲讲你用 Instruments 优化动画性能的经历
+
+### loadView 是干嘛用的？
+
+### viewWillLayoutSubView 你总是知道的
+
+### GCD 里面有哪几种 Queue？
+
+
+
