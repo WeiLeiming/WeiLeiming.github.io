@@ -148,6 +148,8 @@ for (int i = 0; i < n - 1; i++) {
 
 ### 什么是ARC?（ARC是为了解决什么问题诞生的？）
 
+自动引用计数 ( ARC ) 是指内存管理中对引用采取自动计数的技术。在 LLVM 编译器中设置 ARC 为有效状态，就无需再次键入 retain 或 release 代码，这在降低程序崩溃、内存泄漏等风险的同时，很大程度上减少了开发程序的工作量。
+
 ### 请解释以下 Keywords 的区别：assign vs weak, \_\_block vs \_\_weak
 
 ### \_\_block 在 ARC 和 非 ARC 下含义一样吗？
