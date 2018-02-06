@@ -148,43 +148,13 @@ let kSafeAreaBottomInset: CGFloat = UIDevice.iPhoneX() ? 34 : 0
 
 横屏类似，就不在赘述
 
-# 汇信适配
+# 参考资料
 
-- 如使用的 `AutoLayout`，请看 [AutoLayout](#AutoLayout)
+[苹果官方适配指南](https://developer.apple.com/cn/ios/update-apps-for-iphone-x/)
 
+[你可能需要为你的APP适配iOS11](https://www.jianshu.com/p/370d82ba3939)
 
-- 顶部适配：已在 `UIViewController` 增添扩展属性方法 `fx_Y` 直接获取 Y 坐标
-
-  返回规则：
-
-  ```swift
-  /// 有导航栏有透明度时：iPhone X为88，其他机型为64
-  /// 有导航栏无透明度时：iPhone X为0，其他机型为0
-  /// 无导航栏有状态栏时：iPhone X为44，其他机型为20
-  /// 无导航栏无状态栏时：iPhone X为24，其他机型为0
-  ```
-
-  用法示例：
-
-  ```swift
-  CGRect sampleViewRect = CGRectMake(0,
-                                     self.fx_Y,
-                                     self.view.fx_width,
-                                     self.view.fx_height - self.fx_Y - 34);
-  ```
+[最近很火的 Safe Area 到底是什么](https://www.jianshu.com/p/63c0b6cc66fd)
 
 
-- 底部适配：设置底部距离下边界 `34 points`。
 
-  如根据系统开启了以下两个属性
-
-  ```swift
-  // < iOS 11
-  UIViewController: automaticallyAdjustsScrollViewInsets
-  // > iOS 11
-  UIScrollView: contentInsetAdjustmentBehavior
-  ```
-
-  则 `scrollView` 及其子类可以不用调整 Y 坐标，只需做底部适配。
-
-  ​
