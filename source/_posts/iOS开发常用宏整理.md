@@ -6,6 +6,8 @@ tags:
 	- iOS
 ---
 
+最后更新时间：2018-02-25 10:36:00
+
 使用宏不仅方便，而且可以提高开发效率。整理了一下在自己项目中常用的宏。
 
 <!-- more -->
@@ -37,9 +39,9 @@ tags:
 // 是否是空对象
 #define kObjectIsEmpty(_object) (_object == nil || [_object isKindOfClass:[NSNull class]] || ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) || ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
 // 判断是否为iPhone
-#define IS_IPHONE               (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE               ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
 // 判断是否为iPad
-#define IS_IPAD                 (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPAD                 ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 // 判断型号尺寸.5为4寸机型，6为4.7寸机型，6P为5.5寸机型
 #define IS_IPHONE_4_OR_LESS     (IS_IPHONE && SCREEN_MAX_LENGTH < 568.f)
 #define IS_IPHONE_5             (IS_IPHONE && SCREEN_MAX_LENGTH == 568.f)
