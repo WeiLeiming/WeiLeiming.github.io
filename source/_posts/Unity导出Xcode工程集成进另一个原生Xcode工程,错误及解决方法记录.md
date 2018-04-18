@@ -7,7 +7,7 @@ tags:
 typora-copy-images-to: ipic
 ---
 
-最后更新时间：2017.6.7
+最后更新时间：2018.4.18
 
 最近在研究Unity导出的Xcode工程如何集成在现有工程中。现将过程中遇见的问题整理如下。
 
@@ -56,7 +56,7 @@ typora-copy-images-to: ipic
 
 ### 集成工程
 
-> **注意：**Build Setting和Build Phases中的设置均是根据Unity_Xcode中设置得到的，集成的时候对照两个工程的设置集成
+> **注意：**Build Setting和Build Phases中的设置均是根据Unity_Xcode中设置得到的，集成的时候对照两个工程的设置集成，这里只是一个例子
 
 - 我在原生工程目录下新建了一个Unity文件夹来放置从Unity_Xcode工程中拷贝过来需要使用的文件
 
@@ -91,6 +91,8 @@ typora-copy-images-to: ipic
 ![444](https://ww1.sinaimg.cn/large/006tNc79ly1fdgphvrzdij30jj067mxq.jpg)
 
 ​	设置Other Linker Flags
+
+​	这里顺序保持一致
 
 ![333](https://ww3.sinaimg.cn/large/006tNc79ly1fdgplwi962j30j30670t2.jpg)
 
@@ -144,6 +146,8 @@ typora-copy-images-to: ipic
 ![222](https://ww1.sinaimg.cn/large/006tNc79ly1fdgql76hiuj30ou0fkn0n.jpg)
 
 - 修改UnityAppController.h
+
+  > **注意**：我当前用的 `2017.3.1f1` 版本这里已经不需要更改了，可忽略
 
  ```objective-c
 #import "AppDelegate.h"
@@ -254,9 +258,13 @@ inline UnityAppController*	GetAppController()
 
    ![9D5AA7E6-1800-4904-9E7A-E268547875CB](https://ws3.sinaimg.cn/large/006tNbRwly1fgcn2dowhnj30700j241h.jpg)
 
-   解决方法：在PrefixHeader.pch文件中，将自己的头文件全部放入#ifdef中，如下：
+   解决方法：在PrefixHeader.pch文件中，将自己的头文件全部放入`#ifdef __OBJC__`中，如下：
 
    ![177BB71A-B8E2-4DC9-B155-2EADFF2C9E2D](https://ws3.sinaimg.cn/large/006tNbRwly1fgcn0lhrdtj3086060wf1.jpg)
+
+3. 编译出现 `Control reaches end of non-void function` 错误
+
+   解决方法：在 `Build Settings` 中将 `Mismatched Return Type` 设置为 **Yes** 可以消除
 
 # 参考资料
 
