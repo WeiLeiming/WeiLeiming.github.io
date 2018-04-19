@@ -100,11 +100,11 @@ typora-copy-images-to: ipic
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgpqzi4a9j30jj067dg5.jpg)
 
-​	设置C Language Dialect
+​	设置C Language Dialect，在 `2017.3.1f1` 测试不更改，使用 `GNU99` 依然可用
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgpsr63j4j30eq00ldfq.jpg)
 
-​	设置C++ Language Dialect
+​	设置C++ Language Dialect，，在 `2017.3.1f1` 测试不更改，使用 `GNU++11` 依然可用
 
 ![222](https://ww4.sinaimg.cn/large/006tNc79ly1fdgptuhwqkj30e700ngli.jpg)
 
@@ -143,7 +143,7 @@ typora-copy-images-to: ipic
 - 新建PCH文件，命名为PrefixHeader。将Classes中的Prefix.pch文件的内容全部拷贝到Supporting Files中的PrefixHeader.pch中，并删除Classes中的Prefix.pch文件引用
 - 将Classes/main.mm全部内容复制到main.m并把扩展名改为.mm，然后删除Classes/main.mm文件引用，注意红色框圈住的修改细节
 
-![222](https://ww1.sinaimg.cn/large/006tNc79ly1fdgql76hiuj30ou0fkn0n.jpg)
+![image-20180419110553779](https://ws4.sinaimg.cn/large/006tKfTcgy1fqhsdvxv35j31040kmtcr.jpg)
 
 - 修改UnityAppController.h
 
@@ -167,7 +167,6 @@ inline UnityAppController*	GetAppController()
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UIWindow *unityWindow;
-@property (strong, nonatomic) UnityAppController *unityController;
 
 - (void)showUnityWindow;
 - (void)hideUnityWindow;
@@ -197,8 +196,8 @@ inline UnityAppController*	GetAppController()
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    _unityController = [[UnityAppController alloc] init];
-    [_unityController application:application didFinishLaunchingWithOptions:launchOptions];
+    _UnityAppController = [[UnityAppController alloc] init];
+    [_UnityAppController application:application didFinishLaunchingWithOptions:launchOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     TestViewController *vc = [[TestViewController alloc] init];
@@ -212,32 +211,32 @@ inline UnityAppController*	GetAppController()
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    [_unityController applicationWillResignActive:application];
+    [_UnityAppController applicationWillResignActive:application];
 }
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [_unityController applicationDidEnterBackground:application];
+    [_UnityAppController applicationDidEnterBackground:application];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    [_unityController applicationWillEnterForeground:application];
+    [_UnityAppController applicationWillEnterForeground:application];
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [_unityController applicationDidBecomeActive:application];
+    [_UnityAppController applicationDidBecomeActive:application];
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [_unityController applicationWillTerminate:application];
+    [_UnityAppController applicationWillTerminate:application];
 }
 
 
