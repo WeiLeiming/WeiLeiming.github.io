@@ -5,11 +5,27 @@ tags:
 	- React Native
 ---
 
-最后更新时间：2017.9.11
+最后更新时间：2018.6.7
 
 记录学习[React Native](https://github.com/facebook/react-native)过程中踩过的坑。
 
 <!-- more -->
+
+## 镜像源设置
+
+**npm**
+
+```shell
+$ npm config set registry https://registry.npm.taobao.org --global
+$ npm config set disturl https://npm.taobao.org/dist --global
+```
+
+**yarn**
+
+```shell
+$ yarn config set registry https://registry.npm.taobao.org --global
+$ yarn config set disturl https://npm.taobao.org/dist --global
+```
 
 ## 安装React Native时出错
 
