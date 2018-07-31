@@ -6,7 +6,7 @@ tags:
 	- MySQL
 ---
 
-最后更新时间：2017.9.11
+最后更新时间：2018.7.31
 
 # 安装
 
@@ -28,13 +28,13 @@ tags:
 
    使用bash，编辑`~/.bash_profile`
 
-   ```
+   ```shell
    $ vim ~/.bash_profile
    ```
 
    使用zsh，则编辑`~/.zshrc`
 
-   ```
+   ```shell
    $ vim ~/.zshrc
    ```
 
@@ -56,27 +56,27 @@ tags:
 
    bash
 
-   ```
+   ```shell
    $ source ~/.bash_profile
    ```
 
    zsh
 
-   ```
+   ```shell
    $ source ~/.zshrc
    ```
 
 7. 输入命令，登录MySQL
 
-   ```
-   $ mysql -u root -p
+   ```shell
+   $ mysql -uroot -p
    ```
 
 8. 提示输入密码，输入安装包刚安装完后弹出的提示框中的初始密码
 
 9. 成功进入MySQL后，修改初始密码，输入命令，newpass替换为自己的密码
 
-   ```
+   ```shell
    $ SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');
    ```
 
