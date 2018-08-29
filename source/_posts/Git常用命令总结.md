@@ -5,12 +5,21 @@ tags:
 	- Git
 ---
 
+最后更新时间：2018.8.29
+
 配置个人信息
 
 ```shell
 # 配置个人信息
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
+```
+
+配置全局忽略文件
+
+```shell
+# 配置全局忽略文件
+$ git config --global core.excludesfile ~/.gitignore_global
 ```
 
 克隆仓库
