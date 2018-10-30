@@ -7,15 +7,19 @@ tags:
 	- 奇淫巧技
 ---
 
-最后更新时间：2018.8.27
+最后更新时间：2018.10.30
 
 这里以 GitHub 举例
+
+## 生成SSH
 
 生成新的 SSH key
 
 ```shell
 $ ssh-keygen -t rsa -C "xxx@mail.com" -f ~/.ssh/github_id_rsa
 ```
+
+## 配置SSH
 
 配置 config 文件
 
@@ -43,6 +47,8 @@ Host github.com
 
 接着在 GitHub 网站中加入公钥
 
+## 验证SSH
+
 验证是否成功
 
 ```shell
@@ -56,3 +62,12 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 ```
 
 则表示成功，其它也类似操作。
+
+## 其他技巧
+
+取消SSH秘钥密码
+
+```shell
+$ openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa
+```
+
