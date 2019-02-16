@@ -7,6 +7,26 @@ tags:
 	- Mac
 ---
 
+最后更新时间：2019.2.16
+
+## Shadowsocks部署
+
+### 第一步
+
+自备国外的VPS，我使用的是[Vultr](https://www.vultr.com/)家的日本线路
+
+### 第二步
+
+使用[teddysun](https://github.com/teddysun)的一键脚本
+
+```shell
+$ wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh && chmod +x shadowsocks.sh && ./shadowsocks-all.sh
+```
+
+选择想要安装的版本即可。
+
+<!-- more -->
+
 ## BBR加速
 
 安装
