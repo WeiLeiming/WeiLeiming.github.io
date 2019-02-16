@@ -1,0 +1,1277 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="xrV3Blr-aJ8ys4XksZDm4TxN1UPIHQtA_bGfkPS4abw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,Translate," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="雷鸣的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="文件系统基础iOS中的文件系统处理数据文件的持久存储，应用程序和与操作系统本身相关的文件，文件系统是所有进程使用的基本资源之一。iOS中的文件系统主要格式是HFS Plus，为了使系统简单，iOS设备的用户不能直接访问文件系统，应用程序也应遵循此惯例。 iOS标准目录为了安全起见，iOS应用程序与文件系统的交互仅限于应用程序沙盒目录中的目录。在安装新应用程序期间，安装程序会在沙盒目录中为应用程序创">
+<meta name="keywords" content="iOS,Translate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于iOS文件系统">
+<meta property="og:url" content="http://willwei.me/2017/05/22/关于iOS文件系统/index.html">
+<meta property="og:site_name" content="雷鸣的博客">
+<meta property="og:description" content="文件系统基础iOS中的文件系统处理数据文件的持久存储，应用程序和与操作系统本身相关的文件，文件系统是所有进程使用的基本资源之一。iOS中的文件系统主要格式是HFS Plus，为了使系统简单，iOS设备的用户不能直接访问文件系统，应用程序也应遵循此惯例。 iOS标准目录为了安全起见，iOS应用程序与文件系统的交互仅限于应用程序沙盒目录中的目录。在安装新应用程序期间，安装程序会在沙盒目录中为应用程序创">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1ffu9f2migcj30la0n6jrr.jpg">
+<meta property="og:updated_time" content="2019-02-16T13:13:58.971Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于iOS文件系统">
+<meta name="twitter:description" content="文件系统基础iOS中的文件系统处理数据文件的持久存储，应用程序和与操作系统本身相关的文件，文件系统是所有进程使用的基本资源之一。iOS中的文件系统主要格式是HFS Plus，为了使系统简单，iOS设备的用户不能直接访问文件系统，应用程序也应遵循此惯例。 iOS标准目录为了安全起见，iOS应用程序与文件系统的交互仅限于应用程序沙盒目录中的目录。在安装新应用程序期间，安装程序会在沙盒目录中为应用程序创">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1ffu9f2migcj30la0n6jrr.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'TRY8SX7BKP',
+      apiKey: 'a65d0a4fbe7d5f1a35762a6898ea55f2',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://willwei.me/2017/05/22/关于iOS文件系统/"/>
+
+
+
+
+
+  <title> 关于iOS文件系统 | 雷鸣的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-98388090-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d3a0b0e1b89bd5aee64e8645cf88c810";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61961707";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500449825");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">雷鸣的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">生有涯，知无涯</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://willwei.me/2017/05/22/关于iOS文件系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leiming">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雷鸣的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于iOS文件系统
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-22T11:42:27+00:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/22/关于iOS文件系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/05/22/关于iOS文件系统/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/05/22/关于iOS文件系统/" class="leancloud_visitors" data-flag-title="关于iOS文件系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="文件系统基础"><a href="#文件系统基础" class="headerlink" title="文件系统基础"></a>文件系统基础</h1><p>iOS中的文件系统处理数据文件的持久存储，应用程序和与操作系统本身相关的文件，文件系统是所有进程使用的基本资源之一。iOS中的文件系统主要格式是HFS Plus，为了使系统简单，iOS设备的用户不能直接访问文件系统，应用程序也应遵循此惯例。</p>
+<h2 id="iOS标准目录"><a href="#iOS标准目录" class="headerlink" title="iOS标准目录"></a>iOS标准目录</h2><p>为了安全起见，iOS应用程序与文件系统的交互仅限于应用程序沙盒目录中的目录。在安装新应用程序期间，安装程序会在沙盒目录中为应用程序创建多个容器目录。bundle容器目录包含应用程序的bundle，而数据容器目录保存应用程序和用户的数据。数据容器目录进一步分为多个子目录，该应用程序可用于对其数据进行排序和整理。应用程序还可以在运行时请求访问其他容器目录，例如iCloud容器。</p>
+<a id="more"></a>
+<p>这些容器目录构成了应用程序对文件系统的主视图。以下是App的沙盒目录，来自苹果官方文档。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1ffu9f2migcj30la0n6jrr.jpg" style="zoom:50%"></p>
+<p>通常禁止App在其容器目录之外访问或创建文件。这个规则的一个例外是当一个App使用公共系统接口来访问诸如用户的联系人或音乐之类的东西。在这些情况下，使用系统框架帮助App来处理读取或修改相应数据存储所需的任何相关文件操作。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><em>目录</em></th>
+<th style="text-align:left"><em>描述</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AppName.app</td>
+<td style="text-align:left">这是App的bundle。此目录包含App及其所有资源。该目录访问权限为只读，为防止篡改，bundle目录在安装时签名，写入此目录会更改签名并阻止应用启动。该目录的内容不会被iTunes或iCloud备份。但是，从App Store购买的任何App，iTunes会执行初始同步。</td>
+</tr>
+<tr>
+<td style="text-align:left">Documents/</td>
+<td style="text-align:left">使用此目录来存储用户生成的内容。该目录的内容可以通过文件共享提供给用户，因此，该目录只能包含希望向用户公开的文件。此目录的内容由iTunes和iCloud备份。</td>
+</tr>
+<tr>
+<td style="text-align:left">Documents/Inbox</td>
+<td style="text-align:left">使用此目录访问App被外部实体打开的文件。具体来说，邮件程序将与App相关联的电子邮件附件放在此目录。文档交互控制器也可以在其中放置文件。App可以读取和删除此目录中的文件，但无法创建新文件或写入现有文件。如果用户尝试编辑此目录中的文件，则在进行任何更改之前，App必须静静地将其移除目录。该目录的内容由iTunes和iCloud备份。</td>
+</tr>
+<tr>
+<td style="text-align:left">Library/</td>
+<td style="text-align:left">这是一个存放除了用户数据文件之外文件的顶层目录。通常将文件放在几个标准子目录之一中。iOS应用程序通常使用 <code>Application Support</code>和 <code>Caches</code>子目录，但是可以创建自定义子目录。使用<code>Library</code>子目录存储不想向用户公开的文件，App不应将这些目录用于用户数据文件。Library目录(除子目录<code>Caches</code>外)的内容由iTunes和iCloud备份。</td>
+</tr>
+<tr>
+<td style="text-align:left">tmp/</td>
+<td style="text-align:left">使用此目录存放不需要在App启动之间保留的临时文件。App应该在不需要时从该目录中删除文件，但是，当App未运行时系统可能会清除此目录。该目录不会被iTunes或iCloud备份。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件存放位置选择"><a href="#文件存放位置选择" class="headerlink" title="文件存放位置选择"></a>文件存放位置选择</h2><p>为了防止iOS设备上的同步和备份花费较长时间，要选择文件放置的位置。存储了大文件的App可能会减慢备份到iTunes或iCloud的过程。这些应用程序还会消耗大量用户的可用存储空间，这可能会使用户删除应用程序或禁用该应用备份数据到iCloud。考虑到这一点，应按照下列准则存储应用程序数据：</p>
+<ul>
+<li>将用户数据放入<code>Documents/</code>。用户数据通常包含想要向用户公开的文件—可能希望用户创建，导入，删除或编辑的所有文件。对于绘图应用程序，用户数据包括用户可能创建的任何图形文件。对于文本编辑器，包括文本文件。视频和音频应用程序甚至可以包括用户下载以便稍后观看或收听的文件。</li>
+<li>将App创建的支持文件放在<code>Library/Application support/</code>目录中。通常，此目录包括App用于运行但应保持隐藏的用户的文件。该目录还可以包括数据文件，配置文件，模板和从应用程序包中加载的资源的修改版本。</li>
+<li>在<code>Documents</code>和<code>Application Support/</code>中的文件是默认备份。可以使用<code>-[NSURL setResourceValue:forKey:error:]</code>方法传入<code>NSURLIsExcludedFromBackupKey</code>键值调用备份中的文件。任何可以重新创建或下载的文件必须从备份中排除。这对于大型媒体文件尤为重要。如果App下载视频或音频文件，确保它们未包含在备份中。</li>
+<li>将临时数据放在<code>tmp/</code>目录中。临时数据包括任何不需要长时间保留的数据。在完成这些文件时删除这些文件，以便它们不会继续占用用户设备上的空间。当应用程序未运行时，系统会定期清除这些文件。因此，应用程序终止后，无法依赖这些文件。</li>
+<li>将数据缓存文件放在<code>Library/Caches/</code>目录中。缓存数据可用于需要比临时数据存储更持久的数据，但不能与支持文件一样长。一般来说，应用程序不需要缓存数据就能正常运行，但是可以使用缓存数据提高性能。高速缓存数据的示例包括(但不限于)数据库高速缓存文件和暂时的可下载内容。系统可能会删除<code>Caches/</code>目录以释放磁盘空间，因此App必须能够根据需要重新创建或下载这些文件。</li>
+</ul>
+<h1 id="访问文件和目录"><a href="#访问文件和目录" class="headerlink" title="访问文件和目录"></a>访问文件和目录</h1><p>在打开文件之前，首先需要在文件系统中找到文件。系统框架提供许多用于获取已知目录引用的方法，例如<code>Library</code>目录及其内容。还可以通过从已知目录名称构建URL或基于字符串的路径手动指定位置。</p>
+<p>当知道文件位置时，就可以开始规划最佳的访问方式。根据文件类型，可能有几个选项。对于已知的文件类型，通常使用内置的系统方法来读取或写入文件内容，并提供可以使用的对象。对于自定义文件类型，可能需要自己读取原始文件数据。</p>
+<h2 id="选择正确的方式访问文件"><a href="#选择正确的方式访问文件" class="headerlink" title="选择正确的方式访问文件"></a>选择正确的方式访问文件</h2><p>虽然可以打开任何文件并将其内容读取为字节流，但这样做并不总是正确的选择。iOS提供内置的支持，可以轻松打开许多类型的标准文件格式（如文本文件，图像，声音和属性列表）。对于这些标准文件格式，请使用更高级别的选项来读取和写入文件内容。</p>
+<p>以下列出系统支持的常用文件类型。</p>
+<table>
+<thead>
+<tr>
+<th><em>文件类型</em></th>
+<th><em>例子</em></th>
+<th><em>描述</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>资源文件</td>
+<td>Nib文件 <br>图像文件<br>声音文件<br>字符串文件<br>本地化资源</td>
+<td>App使用资源文件来存储独立于使用它的代码的数据。资源文件通常用于存储可本地化的内容，如字符串和图像。从资源文件读取数据的过程取决于资源的类型。<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/LoadingResources/Introduction/Introduction.html#//apple_ref/doc/uid/10000051i" target="_blank" rel="noopener">Resource Programming Guide</a></td>
+</tr>
+<tr>
+<td>文本文件</td>
+<td>纯文本文件<br>UTF-8格式文件<br>UTF-16格式文件</td>
+<td>文本文件是ASCII和Unicode字符的非结构化序列。通常将文本文件的内容加载到NSString对象中，但也可以读取和写入文本文件作为原始字符流。<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Strings/introStrings.html#//apple_ref/doc/uid/10000035i" target="_blank" rel="noopener">String Programming Guide</a></td>
+</tr>
+<tr>
+<td>结构化数据文件</td>
+<td>XML文件<br>属性列表文件<br>偏好文件</td>
+<td>结构化数据文件通常由使用一组特殊字符排列的字符串数据组成。<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/XMLParsing/XMLParsing.html#//apple_ref/doc/uid/10000186i" target="_blank" rel="noopener">Event-Driven XML Programming Guide</a></td>
+</tr>
+<tr>
+<td>归档文件</td>
+<td>使用键控的归档对象创建的二进制文件</td>
+<td>归档是用于存储应用程序运行时对象持久版本的文件格式。归档对象是将对象的状态编码为可以一次写入磁盘的字节流。解档反转过程，使用字节流重新创建对象并将其恢复到之前的状态。归档通常是为文档或其他数据文件实施自定义二进制文件格式的便捷方式。<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Archiving/Archiving.html#//apple_ref/doc/uid/10000047i" target="_blank" rel="noopener">Archives and Serializations Programming Guide</a></td>
+</tr>
+<tr>
+<td>文件包</td>
+<td>自定义文档格式</td>
+<td>一个文件包是一个包含任意数量自定义数据文件的目录，但是它呈现给用户的就像它是单个文件一样。应用程序可以使用文件包来实现包含多个不同文件或不同类型文件混合的复杂文件格式。例如，如果文件格式包含二进制数据文件和一个或多个图像、视频或音频文件，则可以使用文件包。<a href="https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileWrappers/FileWrappers.html#//apple_ref/doc/uid/TP40010672-CH13-SW2" target="_blank" rel="noopener">Using FileWrappers as File Containers</a></td>
+</tr>
+<tr>
+<td>Bundles</td>
+<td>应用<br>插件<br>框架</td>
+<td>Bundles提供了一个结构化的环境用于存储代码和该代码使用的资源。大多数情况下，不能使用Bundle本身，而是使用其中的内容。但是可以根据需要找到Bundle并获取相关信息。<a href="https://developer.apple.com/library/content/documentation/CoreFoundation/Conceptual/CFBundles/Introduction/Introduction.html#//apple_ref/doc/uid/10000123i" target="_blank" rel="noopener">Bundle Programming Guide</a></td>
+</tr>
+<tr>
+<td>代码文件</td>
+<td>二进制代码资源<br>动态共享库</td>
+<td>使用插件和共享库的应用程序需要能够加载该项目的关联代码才能使用其功能。<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/LoadingCode/LoadingCode.html#//apple_ref/doc/uid/10000052i" target="_blank" rel="noopener">Code Loading Programming Topics</a></td>
+</tr>
+</tbody>
+</table>
+<p>在标准文件格式不足的情况下，可以随时创建自己的自定义文件格式。读取和写入自定义文件的内容时，可以将数据作为字节流读取和写入，并将这些字节应用于应用程序的文件相关数据结构。可以完全控制如何读取和写入字节以及如何管理与文件相关的数据结构。</p>
+<h3 id="指定文件或目录的路径"><a href="#指定文件或目录的路径" class="headerlink" title="指定文件或目录的路径"></a>指定文件或目录的路径</h3><p>指定文件或目录位置的首选是使用<code>NSURL</code>类。虽然<code>NSString</code>类具有许多与路径创建相关的方法，但URL提供了一种更强大的方法来定位文件和目录。对于也可以使用网络资源的App，URL也意味着可以使用一种类型的对象来管理位于本地文件系统或网络服务器上的项目。除了<code>NSURL</code>，还可以使用<code>CFURLRef</code>不透明类型来操作路径作为URL，该类与<code>NSURL</code>是桥接的，这意味着可以用代码互相转换使用。</p>
+<p>对于大多数URL，可以通过使用适当的<code>NSURL</code>方法将目录和文件名连接在一起直到具有项目路径来构建URL。以这种方式构建的URL被称为基于路径的URL，因为它存储着遍历目录层次结构以查找项目所需的名称。(还可以通过将目录和文件名连接在一起构建基于字符串的路径，结果以与<code>NSURL</code>类使用格式略有不同的格式存储)。除了基于路径的URL，还可以创建文件引用URL，它使用唯一的ID来标识文件或目录的位置。</p>
+<p>所有以下条目都是对用户<code>Documents</code>目录中调用的<code>MyFile.txt</code>文件的有效引用：</p>
+<p><strong>基于路径的URL:</strong> <code>file://localhost/Users/steve/Documents/MyFile.txt</code></p>
+<p><strong>文件引用URL:</strong> <code>file:///.file/id=6571367.2773272/</code></p>
+<p><strong>基于字符串的路径:</strong> <code>/Users/steve/Documents/MyFile.txt</code></p>
+<p>可以使用<code>NSURL</code>方法创建URL对象，并在需要时将其转换为文件引用URL。基于路径的URL更容易操作，更容易调试，并且通常被类首选，如<code>NSFileManager</code>类。文件引用URL的优点是，在应用程序运行时，它们比基于路径的URL更强壮。如果用户在Finder中移动文件，则引用该文件的任何基于路径的URL立即变为无效，并且必须更新到新路径。但是，只要文件移动到同一磁盘上的另一个位置，其唯一的ID不更改，任何文件引用URL仍然有效。尽管在应用程序运行时它们可以安全使用，但如果系统重新启动，则文件引用URL在应用程序启动之间存储和重新使用是不安全的，因为文件的ID可能会更改。如果要在应用程序启动之间持久存储文件的位置，请按“使用书签查找文件”中所述创建一个书签。</p>
+<p>当然，您仍然可能需要使用字符串来引用文件。幸运的是，<code>NSURL</code>类提供了将基于路径的URL转换为<code>NSString</code>对象的方法。当向用户呈现该路径或调用接收字符串而不是URL的系统方法时，可能会使用基于字符串的路径。使用<code>NSURL</code>类的<code>absoluteString</code>方法来完成<code>NSURL</code>对象和<code>NSString</code>对象之间的转换。</p>
+<p>因为<code>NSURL</code>和<code>NSString</code>描述文件或目录的唯一位置，可以在实际的文件或目录存在之前创建它们。两个类都不会尝试验证指定的文件或目录的实际存在。事实上，必须创建一个不存在的文件或目录的路径，然后才能在磁盘上创建它。</p>
+<p>如果有一个<code>NSURL</code>对象引用磁盘上的实际文件或目录，并且要获取用户所在卷的可见名称，则可以使用<code>getResourceValue:forKey:error:</code>方法两步获取：</p>
+<ul>
+<li>使用<code>NSURLVolumeURLKey</code>常量从资源URL获取卷URL。</li>
+<li>使用<code>NSURLLocalizedNameKey</code>常量从卷URL获取用户可见的卷名称。</li>
+</ul>
+<p>使用<code>NSURLLocalizedNameKey</code>常数而不是<code>NSURLNameKey</code>常数。使用<code>NSURLNameKey</code>返回文件系统中卷的名称，可能与用户可见名称不同。以下演示了当前用户主目录的这个过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [NSURL fileURLWithPath:NSHomeDirectory()];</span><br><span class="line">NSURL *volumeURL = nil;</span><br><span class="line">NSString *volumeName = nil;</span><br><span class="line">if ([url getResourceValue:&amp;volumeURL forKey:NSURLVolumeURLKey error:nil]) &#123;</span><br><span class="line">    NSLog(@&quot;卷URL为: %@&quot;, volumeURL);</span><br><span class="line">    if ([volumeURL getResourceValue:&amp;volumeName forKey:NSURLLocalizedNameKey error:nil]) &#123;</span><br><span class="line">        NSLog(@&quot;卷名称为: %@&quot;, volumeName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在文件系统中查找项目"><a href="#在文件系统中查找项目" class="headerlink" title="在文件系统中查找项目"></a>在文件系统中查找项目</h2><p>在可以访问文件或目录之前，需要知道其位置。找到文件和目录有以下几种方法：</p>
+<ul>
+<li>自己找文件。</li>
+<li>请用户指定一个位置。</li>
+<li>在沙盒和非沙盒应用程序中的标准系统目录中查找文件。</li>
+<li>使用书签。</li>
+</ul>
+<p>iOS的文件系统对应该放置文件的位置制定了具体的指导方针，因此App创建或使用的大部分项目应存储在众所周知的位置。系统提供用于定位这些众所周知位置的接口，App可以使用这些接口来定位项目并构建特定文件的路径。</p>
+<h3 id="在App-Bundle中查找"><a href="#在App-Bundle中查找" class="headerlink" title="在App Bundle中查找"></a>在App Bundle中查找</h3><p>需要将资源文件定位在其bundle目录(或其他已知bundle内)中的应用程序必须使用<code>NSBundle</code>对象执行此操作。Bundles通过特定方式组织这些文件，消除App记住单个文件位置的需要。使用<code>NSBundle</code>类的方法来根据需要定位应用程序的资源。这种技术的优点在于，可以通过重新整理bundle的内容，而无需重写代码来访问它。Bundles还可以利用当前用户的语言设置来查找资源文件的适当本地化版本。</p>
+<p>以下代码显示了如何检索位于应用程序主Bundle中名为<code>MyImage.png</code>图像的URL对象。此代码仅确定文件的位置，它不会打开文件。可以将返回的URL传递给<code>NSImage</code>类的方法，从磁盘加载使用它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [[NSBundle mainBundle] URLForResource:@&quot;MyImage&quot; withExtension:@&quot;png&quot;];</span><br></pre></td></tr></table></figure>
+<h3 id="在标准目录中查找"><a href="#在标准目录中查找" class="headerlink" title="在标准目录中查找"></a>在标准目录中查找</h3><p>当需要在其中一个标准目录中找到文件时，请首先使用系统框架找到目录，然后使用生成的URL构建文件的路径。<code>Foundation</code>框架包括几个用于定位标准系统目录的选项。通过使用这些方法，无论应用程序是否被沙盒化，路径都将是正确的：</p>
+<ul>
+<li><code>NSFileManager</code>类的<code>URLsForDirectory:inDomains:</code>方法返回打包了目录位置的<code>NSURL</code>对象。要搜索的目录是一个<code>NSSearchPathDirectory</code>常量。这些常量为用户的主目录以及大多数标准目录提供URL。</li>
+<li><code>NSSearchPathForDirectoriesInDomains</code>函数的功能类似于<code>URLsForDirectory:inDomains:</code>方法，但返回目录的位置是一个基于字符串的路径。使用<code>URLsForDirectory:inDomains:</code>方法替代。</li>
+<li><code>NSHomeDirectory</code>函数返回用户或应用程序的主目录路径。(返回的主目录取决于平台以及应用程序是否在沙盒中)。当应用程序被沙盒化时，主目录指向应用程序的沙盒，否则它指向文件系统上的用户主目录。如果将文件构建到用户主目录的子目录中，请考虑使用<code>URLsForDirectory:inDomains:</code>方法替代。</li>
+</ul>
+<p>可以使用从上述方法中接收的URL或基于路径的字符串来构建包含所需文件位置的新对象。<code>NSURL</code>和<code>NSString</code>类都提供了与路径相关的方法用于添加和删除路径组件并对路径进行一般性更改。下面显示了一个搜索标准<code>Application Support</code>目录并为包含应用程序数据文件的目录创建一个新URL的示例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">- (NSURL *)applicationDataDirectory &#123;</span><br><span class="line">    NSFileManager *sharedFM = [NSFileManager defaultManager];</span><br><span class="line">    NSArray *possibleURLs = [sharedFM URLsForDirectory:NSApplicationSupportDirectory</span><br><span class="line">                                             inDomains:NSUserDomainMask];</span><br><span class="line">    NSURL *appSupportDir = nil;</span><br><span class="line">    NSURL *appDirectory = nil;</span><br><span class="line">    </span><br><span class="line">    if ([possibleURLs count] &gt;= 1) &#123;</span><br><span class="line">        // Use the first directory (if multiple are returned)</span><br><span class="line">        appSupportDir = [possibleURLs objectAtIndex:0];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // If a valid app support directory exists, add the</span><br><span class="line">    // app&apos;s bundle ID to it to specify the final directory.</span><br><span class="line">    if (appSupportDir) &#123;</span><br><span class="line">        NSString *appBundleID = [[NSBundle mainBundle] bundleIdentifier];</span><br><span class="line">        appDirectory = [appSupportDir URLByAppendingPathComponent:appBundleID];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return appDirectory;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用书签查找文件"><a href="#使用书签查找文件" class="headerlink" title="使用书签查找文件"></a>使用书签查找文件</h3><p>如果想要永久保存文件的位置，使用<code>NSURL</code>的书签功能。书签是不透明的数据结构，封装在一个描述文件位置的<code>NSData</code>对象中。尽管路径和文件引用URL在应用程序启动之间可能会很脆弱，但是通常也可以使用书签来重新创建文件的URL，即使在文件被移动或重命名的情况下也是如此。</p>
+<p>要为现有URL创建一个书签，使用<code>NSURL</code>的<code>bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:</code>方法。指定<code>NSURLBookmarkCreationSuitableForBookmarkFile</code>选项创建一个适合保存到磁盘的<code>NSData</code>对象。以下是一个使用此方法创建书签数据对象的简单示例实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (NSData *)bookmarkForURL:(NSURL *)url &#123;</span><br><span class="line">    NSError *theError = nil;</span><br><span class="line">    NSData *bookmark = [url bookmarkDataWithOptions:NSURLBookmarkCreationSuitableForBookmarkFile</span><br><span class="line">                     includingResourceValuesForKeys:nil</span><br><span class="line">                                      relativeToURL:nil</span><br><span class="line">                                              error:&amp;theError];</span><br><span class="line">    if (theError || (bookmark == nil)) &#123;</span><br><span class="line">        // Handle any errors.</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    return bookmark;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果使用<code>NSURL</code>的<code>writeBookmarkData:toURL:options:error:</code>方法将永久书签数据写入磁盘，系统在磁盘上创建的是一个别名文件。别名类似于符号链接，但实现方式不同。通常，当用户想要创建到系统其他位置的文件链接时，用户会从Finder创建别名。</p>
+<p>要将书签数据对象转换回URL，使用<code>NSURL</code>的<code>URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:</code>方法。以下显示了将书签转换为URL的过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (NSURL *)urlForBookmark:(NSData *)bookmark &#123;</span><br><span class="line">    BOOL bookmarkIsStale = NO;</span><br><span class="line">    NSError *theError = nil;</span><br><span class="line">    NSURL *bookmarkURL = [NSURL URLByResolvingBookmarkData:bookmark</span><br><span class="line">                                                   options:NSURLBookmarkResolutionWithoutUI</span><br><span class="line">                                             relativeToURL:nil</span><br><span class="line">                                       bookmarkDataIsStale:&amp;bookmarkIsStale</span><br><span class="line">                                                     error:&amp;theError];</span><br><span class="line">    </span><br><span class="line">    if (bookmarkIsStale || (theError != nil)) &#123;</span><br><span class="line">        // Handle any errors</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    return bookmarkURL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="枚举目录的内容"><a href="#枚举目录的内容" class="headerlink" title="枚举目录的内容"></a>枚举目录的内容</h2><p>要发现给定目录的内容需要枚举该目录。Cocoa支持一次枚举一个目录一个文件或一次所有。无论选择哪个，谨慎枚举目录。每次枚举都可以触及大量的文件和子目录，这很快将变得代价昂贵。</p>
+<h3 id="一次枚举一个目录一个文件"><a href="#一次枚举一个目录一个文件" class="headerlink" title="一次枚举一个目录一个文件"></a>一次枚举一个目录一个文件</h3><p>当要搜索特定文件并在找到该文件时停止枚举，建议一次枚举一个目录一个文件。逐个文件枚举使用<code>NSDirectoryEnumerator</code>类，该类定义了检索项目的方法。因为<code>NSDirectoryEnumerator</code>本身是一个抽象类，所以不能直接创建它的实例。相反，可以使用<code>enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:</code>或<code>NSFileManager</code>对象的<code>enumeratorAtPath:</code>方法来获取用于枚举的类的具体实例。</p>
+<p>枚举器对象返回枚举目录中的所有文件和目录的路径。因为枚举是递归和跨设备边界的，所返回的文件和目录的数量可能超过起始目录中的内容。可以通过调用枚举器对象的<code>skipDescendents</code>方法来跳过不感兴趣目录的内容。枚举器对象不会解析符号链接或尝试遍历指向目录的符号链接。</p>
+<p>以下代码显示了如何使用该 <code>enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:</code>方法列出给定目录的所有用户可见子目录，注意它们是目录还是文件包。该<code>keys</code>数组告诉枚举器对象为每个项目预取和缓存信息。通过仅接触一次磁盘可提高获取此信息的效率。options参数指定枚举不应列出的文件包和隐藏文件的内容。错误处理程序是返回布尔值的block块对象。如果block返回<code>YES</code>，则该在错误后继续列举， 如果返回<code>NO</code>，枚举停止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">NSURL *directoryURL = &lt;#An NSURL object that contains a reference to a directory#&gt;;</span><br><span class="line"></span><br><span class="line">NSArray *keys = [NSArray arrayWithObjects:</span><br><span class="line">                 NSURLIsDirectoryKey, NSURLIsPackageKey, NSURLLocalizedNameKey, nil];</span><br><span class="line"></span><br><span class="line">NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager]</span><br><span class="line">                                     enumeratorAtURL:directoryURL</span><br><span class="line">                                     includingPropertiesForKeys:keys</span><br><span class="line">                                     options:(NSDirectoryEnumerationSkipsPackageDescendants |</span><br><span class="line">                                              NSDirectoryEnumerationSkipsHiddenFiles)</span><br><span class="line">                                     errorHandler:^(NSURL *url, NSError *error) &#123;</span><br><span class="line">                                         // Handle the error.</span><br><span class="line">                                         // Return YES if the enumeration should continue after the error.</span><br><span class="line">                                         return &lt;#YES or NO#&gt;;</span><br><span class="line">                                     &#125;];</span><br><span class="line"></span><br><span class="line">for (NSURL *url in enumerator) &#123;</span><br><span class="line">    // Error checking is omitted for clarity.</span><br><span class="line">    NSNumber *isDirectory = nil;</span><br><span class="line">    [url getResourceValue:&amp;isDirectory forKey:NSURLIsDirectoryKey error:NULL];</span><br><span class="line">    </span><br><span class="line">    if ([isDirectory boolValue]) &#123;</span><br><span class="line">        NSString *localizedName = nil;</span><br><span class="line">        [url getResourceValue:&amp;localizedName forKey:NSURLLocalizedNameKey error:NULL];</span><br><span class="line">        </span><br><span class="line">        NSNumber *isPackage = nil;</span><br><span class="line">        [url getResourceValue:&amp;isPackage forKey:NSURLIsPackageKey error:NULL];</span><br><span class="line">        </span><br><span class="line">        if ([isPackage boolValue]) &#123;</span><br><span class="line">            NSLog(@&quot;Package at %@&quot;, localizedName);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            NSLog(@&quot;Directory at %@&quot;, localizedName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过使用<code>NSDirectoryEnumerator</code>声明的其他方法来确定枚举期间文件的属性(父目录和当前文件或目录)，并控制递归到子目录中。以下代码枚举了一个目录的内容，并列出了最近24小时内修改过的文件。然而，如果它遇到RTFD文件包，它会跳过对它们的递归。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">NSString *directoryPath = &lt;#Get a path to a directory#&gt;;</span><br><span class="line">NSDirectoryEnumerator *directoryEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:directoryPath];</span><br><span class="line">NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:(-60 * 60 * 24)];</span><br><span class="line">for (NSString *path in directoryEnumerator) &#123;</span><br><span class="line">    if ([[path pathExtension] isEqualToString:@&quot;rtfd&quot;]) &#123;</span><br><span class="line">        // Don&apos;t enumerate this directory.</span><br><span class="line">        [directoryEnumerator skipDescendents];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSDictionary *attributes = [directoryEnumerator fileAttributes];</span><br><span class="line">        NSDate *lastModificationDate = [attributes objectForKey:NSFileModificationDate];</span><br><span class="line">        if ([yesterday earlierDate:lastModificationDate] == yesterday) &#123;</span><br><span class="line">            NSLog(@&quot;%@ was modified within the last 24 hours&quot;, path);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在单个批处理中获取目录的内容"><a href="#在单个批处理中获取目录的内容" class="headerlink" title="在单个批处理中获取目录的内容"></a>在单个批处理中获取目录的内容</h3><p>如果想要查看目录中的每一项，可以在方便的情况下检索项目的快照并对其进行迭代。在批处理操作中检索目录的内容不是枚举目录的最有效方法，因为文件管理器必须每次都遍历整个目录内容。但是，如果计划查看所有项目，那么检索项目是一种简单的方式。</p>
+<p>使用<code>NSFileManager</code>有以下两种选择方式对目录进行批枚举：</p>
+<ul>
+<li>执行浅枚举，使用<code>contentsOfDirectoryAtURL:includingPropertiesForKeys:options:error:</code>或<code>contentsOfDirectoryAtPath:error:</code>方法。</li>
+<li>执行深枚举并仅返回子目录，使用<code>subpathsOfDirectoryAtPath:error:</code>方法。</li>
+</ul>
+<p>以下代码是一个使用<code>contentsOfDirectoryAtURL:includingPropertiesForKeys:options:error:</code>方法枚举目录内容的示例。使用URL的好处之一是还可以有效地检索每项的其他信息。此示例检索目录中每项的本地化名称，创建日期和类型信息，并将该信息存储在相应的<code>NSURL</code>对象中。当该方法返回时，可以继续迭代<code>array</code>变量中的项目，并使用它们进行所需操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = &lt;#A URL for a directory#&gt;;</span><br><span class="line">NSError *error = nil;</span><br><span class="line">NSArray *properties = [NSArray arrayWithObjects: NSURLLocalizedNameKey,</span><br><span class="line">                       NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey, nil];</span><br><span class="line">NSArray *array = [[NSFileManager defaultManager]</span><br><span class="line">                  contentsOfDirectoryAtURL:url</span><br><span class="line">                  includingPropertiesForKeys:properties</span><br><span class="line">                  options:(NSDirectoryEnumerationSkipsHiddenFiles)</span><br><span class="line">                  error:&amp;error];</span><br><span class="line">if (array == nil) &#123;</span><br><span class="line">    // Handle the error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="确定存储App特定文件的位置"><a href="#确定存储App特定文件的位置" class="headerlink" title="确定存储App特定文件的位置"></a>确定存储App特定文件的位置</h2><p><code>Library</code>目录是应用程序创建和管理文件的指定存储库。App是沙盒目录，这些目录可能在不同位置。结果是始终使用<code>NSFileManager</code>的<code>URLsForDirectory:inDomains:</code>方法与<code>NSUserDomainMask</code>作为域来定位要存储这些数据的特定目录。</p>
+<ul>
+<li>使用<code>Application Support</code>目录常量 <code>NSApplicationSupportDirectory</code>，将<em>&lt;bundle_ID&gt;</em>添加上：<ul>
+<li>应用程序为用户创建和管理的资源和数据文件。使用此目录来存储应用程序状态信息，计算或下载的数据，甚至用户创建的数据。</li>
+<li>自动保存文件。</li>
+</ul>
+</li>
+<li>使用<code>Caches</code>目录常量<code>NSCachesDirectory</code>，添加<em>&lt;bundle_ID&gt;</em>目录缓存数据文件或任何文件，应用程序可以轻松重新创建。</li>
+<li>使用<code>NSUserDefaults</code>类读取和写入偏好。该类自动将首选项写入适当的位置。</li>
+<li>使用<code>NSFileManager</code>方法<code>URLsForDirectory:inDomains:</code>获取存储临时文件的目录。临时文件是打算立即使用某些正在进行操作的文件，但是稍后打算丢弃。一旦完成，删除临时文件。</li>
+</ul>
+<p>如果在三天后不删除临时文件，系统可能会删除它们，无论是否使用它们。</p>
+<h1 id="管理文件和目录"><a href="#管理文件和目录" class="headerlink" title="管理文件和目录"></a>管理文件和目录</h1><p>涉及文件和目录的一些最基本操作是创建它们并将它们移动到文件系统。这些操作是应用程序如何构建其执行任务所需的文件系统结构。对于大多数操作，<code>NSFileManager</code>类应提供创建和操作文件所需的功能。在极少数情况下，不需要直接使用BSD级别的功能。</p>
+<h2 id="以编程方式创建新文件和目录"><a href="#以编程方式创建新文件和目录" class="headerlink" title="以编程方式创建新文件和目录"></a>以编程方式创建新文件和目录</h2><p>创建文件和目录是文件管理的基本部分。通常，创建自定义目录来组织代码创建的文件。例如，可以在应用程序<code>Application Support</code>目录中创建一些自定义目录，以存储应用程序管理的任何私有数据文件。有很多方法来创建文件。</p>
+<h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><p>当要创建自定义目录时，可以使用以下<code>NSFileManager</code>方法。一个进程可以在任何具有这样做权限的地方创建目录，它始终包括当前主目录，并且还可以包括其他文件系统位置。可以通过构建一个路径来指定要创建的目录，并将<code>NSURL</code>或<code>NSString</code>对象传递给以下方法之一：</p>
+<ul>
+<li><code>createDirectoryAtURL:withIntermediateDirectories:attributes:error:</code> </li>
+<li><code>createDirectoryAtPath:withIntermediateDirectories:attributes:error:</code></li>
+</ul>
+<p>以下代码显示了如何在<code>~/Library/Application Support</code>中为应用程序文件创建自定义目录。如果该目录不存在，则该方法将创建目录，并将目录的路径返回给调用代码。因为这种方法每次都触及文件系统，所以避免重复调用此方法来检索URL。可以调用它一次，然后缓存返回的URL。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (NSURL *)applicationDirectory &#123;</span><br><span class="line">    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];</span><br><span class="line">    NSFileManager *fm = [NSFileManager defaultManager];</span><br><span class="line">    NSURL *dirPath = nil;</span><br><span class="line">    </span><br><span class="line">    // Find the application support directory in the home directory.</span><br><span class="line">    NSArray *appSupportDir = [fm URLsForDirectory:NSApplicationSupportDirectory</span><br><span class="line">                                        inDomains:NSUserDomainMask];</span><br><span class="line">    if ([appSupportDir count] &gt; 0) &#123;</span><br><span class="line">        // Append the bundle ID to the URL for the</span><br><span class="line">        // Application Support directory</span><br><span class="line">        dirPath = [[appSupportDir objectAtIndex:0] URLByAppendingPathComponent:bundleID];</span><br><span class="line">        // If the directory does not exist, this method creates it.</span><br><span class="line">        // This method is only available in macOS 10.7 and iOS 5.0 or later.</span><br><span class="line">        NSError *theError = nil;</span><br><span class="line">        if (![fm createDirectoryAtURL:dirPath withIntermediateDirectories:YES</span><br><span class="line">                           attributes:nil error:&amp;theError]) &#123;</span><br><span class="line">            // Handle the error.</span><br><span class="line">            return nil;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dirPath;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="创建新文件"><a href="#创建新文件" class="headerlink" title="创建新文件"></a>创建新文件</h3><p>创建文件有两个部分：为文件系统中的文件创建一个记录，并用内容填充该文件。用于创建文件的所有高级接口同时执行两个任务，通常用<code>NSData</code>或<code>NSString</code>对象的内容填充文件，然后关闭该文件。还可以使用较低级别的函数来创建一个空文件，并获得一个文件描述符，然后可以使用该文件描述符来填充数据。可以用来创建文件的一些例程有：</p>
+<ul>
+<li><code>createFileAtPath:contents:attributes:</code>（<code>NSFileManager</code>）</li>
+<li><code>writeToURL:atomically:</code>（<code>NSData</code>）</li>
+<li><code>writeToURL:atomically:</code>（<code>NSString</code>）</li>
+<li><code>writeToURL:atomically:encoding:error:</code>（<code>NSString</code>）</li>
+<li><code>writeToURL:atomically:</code> （各种集合类定义了用于编写属性列表的方法。）</li>
+<li><code>open</code>功能与<code>O_CREAT</code>选项创建一个新的空文件</li>
+</ul>
+<p>创建的任何文件都会继承与当前用户和进程关联的权限。当一次写入新文件的内容时，系统例程通常在将内容写入磁盘后关闭文件。如果例程返回文件描述符，则可以使用该描述符继续从文件读取和写入。</p>
+<h2 id="复制移动文件和目录"><a href="#复制移动文件和目录" class="headerlink" title="复制移动文件和目录"></a>复制移动文件和目录</h2><p>要复制文件系统周围的项目，<code>NSFileManager</code>类提供<code>copyItemAtURL:toURL:error:</code>和<code>copyItemAtPath:toPath:error:</code>方法。移动文件使用<code>moveItemAtURL:toURL:error:</code>或<code>moveItemAtPath:toPath:error:</code>方法。</p>
+<p>以上方法一次移动或复制单个文件或目录。移动或复制目录时，目录及其所有内容将受到影响。移动和复制操作的语义与Finder中的相同。在同一卷上移动操作不会导致创建新版本的项目。卷之间的移动操作的行为与复制操作相同。当移动或复制项目时，当前进程必须具有读取项目的权限，并将其移动或复制到新位置。</p>
+<p>移动和复制操作可能需要很长时间才能完成，并且<code>NSFileManager</code>类同步执行这些操作。因此，建议在并发调度队列中执行任何此类操作，而不是在应用程序的主线程上执行。以下代码显示了一个例子，通过异步创建虚构应用程序私有数据的备份。（为了示例的目的，私有数据位于<code>~/Library/Application Support/&lt;bundleID&gt;/Data</code>目录中，其中<em>bundleID</em>是应用程序的实际bundle标识符。）如果首次尝试复制目录失败，则此方法将检查是否存在先前的备份并将其删除。然后继续尝试，如果第二次失败，则中止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">- (void)backupMyApplicationData &#123;</span><br><span class="line">    // Get the application&apos;s main data directory</span><br><span class="line">    NSArray *theDirs = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory</span><br><span class="line">                                                              inDomains:NSUserDomainMask];</span><br><span class="line">    if ([theDirs count] &gt; 0) &#123;</span><br><span class="line">        // Build a path to ~/Library/Application Support/&lt;bundle_ID&gt;/Data</span><br><span class="line">        // where &lt;bundleID&gt; is the actual bundle ID of the application.</span><br><span class="line">        NSURL *appSupportDir = (NSURL *)[theDirs objectAtIndex:0];</span><br><span class="line">        NSString *appBundleID = [[NSBundle mainBundle] bundleIdentifier];</span><br><span class="line">        NSURL *appDataDir = [[appSupportDir URLByAppendingPathComponent:appBundleID]</span><br><span class="line">                             URLByAppendingPathComponent:@&quot;Data&quot;];</span><br><span class="line">        // Copy the data to ~/Library/Application Support/&lt;bundle_ID&gt;/Data.backup</span><br><span class="line">        NSURL *backupDir = [appDataDir URLByAppendingPathExtension:@&quot;backup&quot;];</span><br><span class="line">        // Perform the copy asynchronously.</span><br><span class="line">        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">            // It&apos;s good habit to alloc/init the file manager for move/copy operations,</span><br><span class="line">            // just in case you decide to add a delegate later.</span><br><span class="line">            NSFileManager *theFM = [[NSFileManager alloc] init];</span><br><span class="line">            NSError *anError;</span><br><span class="line">            // Just try to copy the directory.</span><br><span class="line">            if (![theFM copyItemAtURL:appDataDir toURL:backupDir error:&amp;anError]) &#123;</span><br><span class="line">                // If an error occurs, it&apos;s probably because a previous backup directory</span><br><span class="line">                // already exists.  Delete the old directory and try again.</span><br><span class="line">                if ([theFM removeItemAtURL:backupDir error:&amp;anError]) &#123;</span><br><span class="line">                    // If the operation failed again, abort for real.</span><br><span class="line">                    if (![theFM copyItemAtURL:appDataDir toURL:backupDir error:&amp;anError]) &#123;</span><br><span class="line">                        // Report the error....</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除文件和目录"><a href="#删除文件和目录" class="headerlink" title="删除文件和目录"></a>删除文件和目录</h2><p>要删除文件和目录，使用以下<code>NSFileManager</code>类的方法：</p>
+<ul>
+<li><code>removeItemAtURL:error:</code></li>
+<li><code>removeItemAtPath:error:</code></li>
+</ul>
+<p>当使用这些方法删除文件时，需意识到是永久删除文件系统中的文件。这些方法不会将文件移动到稍后可以将其恢复的垃圾桶。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672" target="_blank" rel="noopener">File System Programming Guide</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat_pay.jpg" alt="Leiming WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay_pay.jpg" alt="Leiming Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Translate/" rel="tag"># Translate</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/26/青春和爱情/" rel="next" title="青春和爱情">
+                <i class="fa fa-chevron-left"></i> 青春和爱情
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/27/解决Mac系统无法设置以太网IP地址/" rel="prev" title="解决Mac系统无法设置以太网IP地址">
+                解决Mac系统无法设置以太网IP地址 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Leiming" />
+          <p class="site-author-name" itemprop="name">Leiming</p>
+           
+              <p class="site-description motion-element" itemprop="description">iOS/U3D developer.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/WeiLeiming" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://shiviy.github.io/" title="Leo's Blog" target="_blank">Leo's Blog</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统基础"><span class="nav-number">1.</span> <span class="nav-text">文件系统基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS标准目录"><span class="nav-number">1.1.</span> <span class="nav-text">iOS标准目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件存放位置选择"><span class="nav-number">1.2.</span> <span class="nav-text">文件存放位置选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问文件和目录"><span class="nav-number">2.</span> <span class="nav-text">访问文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择正确的方式访问文件"><span class="nav-number">2.1.</span> <span class="nav-text">选择正确的方式访问文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指定文件或目录的路径"><span class="nav-number">2.1.1.</span> <span class="nav-text">指定文件或目录的路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在文件系统中查找项目"><span class="nav-number">2.2.</span> <span class="nav-text">在文件系统中查找项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在App-Bundle中查找"><span class="nav-number">2.2.1.</span> <span class="nav-text">在App Bundle中查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在标准目录中查找"><span class="nav-number">2.2.2.</span> <span class="nav-text">在标准目录中查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用书签查找文件"><span class="nav-number">2.2.3.</span> <span class="nav-text">使用书签查找文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举目录的内容"><span class="nav-number">2.3.</span> <span class="nav-text">枚举目录的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一次枚举一个目录一个文件"><span class="nav-number">2.3.1.</span> <span class="nav-text">一次枚举一个目录一个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在单个批处理中获取目录的内容"><span class="nav-number">2.3.2.</span> <span class="nav-text">在单个批处理中获取目录的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确定存储App特定文件的位置"><span class="nav-number">2.4.</span> <span class="nav-text">确定存储App特定文件的位置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#管理文件和目录"><span class="nav-number">3.</span> <span class="nav-text">管理文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以编程方式创建新文件和目录"><span class="nav-number">3.1.</span> <span class="nav-text">以编程方式创建新文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新文件"><span class="nav-number">3.1.2.</span> <span class="nav-text">创建新文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制移动文件和目录"><span class="nav-number">3.2.</span> <span class="nav-text">复制移动文件和目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件和目录"><span class="nav-number">3.3.</span> <span class="nav-text">删除文件和目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leiming</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 90380, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 90380, xid: "2017/05/22/关于iOS文件系统/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/90380/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8RMgxQVBABdzp2Xkb2Jzft92-gzGzoHsz", "oE9CfaGrfzm9hGzXWt3Ti2FG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
